@@ -12,10 +12,10 @@ namespace BrasilGeo.Domain.Entities
 
         public Email Email { get; private set; }
         public string Password { get; private set; }
-        ICollection<Role> Roles { get;  } = new List<Role>();
+        ICollection<Role> Roles { get; } = new List<Role>();
         public bool Equals(User? other)
         {
-           return Email== other.Email;
+            return Email == other.Email;
         }
     }
 }

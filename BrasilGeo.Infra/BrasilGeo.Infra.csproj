@@ -10,4 +10,11 @@
     <ProjectReference Include="..\BrasilGeo.Aplications\BrasilGeo.Aplications.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Context\" />
+    <Folder Include="Configurations\" />
+    <Folder Include="IoC\" />
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+
 </Project>

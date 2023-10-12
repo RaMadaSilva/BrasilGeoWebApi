@@ -15,4 +15,8 @@
     <ProjectReference Include="..\BrasilGeo.Infra\BrasilGeo.Infra.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
 </Project>

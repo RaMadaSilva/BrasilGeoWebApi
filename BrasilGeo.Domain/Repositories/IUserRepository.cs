@@ -9,6 +9,6 @@ namespace BrasilGeo.Domain.Repositories
         Task<IEnumerable<User>> GetAllUserWithRoleAsync();
         Task<User> GetUserByEmailWithRoleAsync(Email email);
         Task<User> GetUserByIdWithRoleAsync(long id);
-
+        Task<bool> AssociateUserToRoles(long id, List<string> roles);
     }
 }

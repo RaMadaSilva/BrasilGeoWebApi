@@ -4,6 +4,7 @@ namespace BrasilGeo.Domain.Entities
 {
     public class User : BaseEntity, IEquatable<User>
     {
+        private readonly List<Role> _roles = new();
         public User(Email email, string password)
         {
             Email = email;
@@ -12,7 +13,9 @@ namespace BrasilGeo.Domain.Entities
 
         public Email Email { get; private set; }
         public string Password { get; private set; }
-        ICollection<Role> Roles { get; } = new List<Role>();
+        IReadOnlyCollection<Role> Roles => _roles;
+
+        public void AddRole(Role role) => _roles.Add(role);
         public bool Equals(User? other)
         {
             return Email == other.Email;

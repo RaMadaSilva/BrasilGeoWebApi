@@ -8,6 +8,6 @@ namespace BrasilGeo.Domain.Repositories
         Task<TEntity> GetByIdAsync (long id);
         Task SaveAsync(TEntity entity);
         Task UpdateAsync(TEntity entity);
-        Task DeleteAsync(long id);
+        Task DeleteAsync(TEntity entity);
     }
 }

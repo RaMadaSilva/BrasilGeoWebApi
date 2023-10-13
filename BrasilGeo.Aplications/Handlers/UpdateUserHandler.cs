@@ -29,7 +29,8 @@ namespace BrasilGeo.Aplications.Handlers
                 return new CommandResult(false, $"Não existe um usario com Id = {command.Id}", string.Empty);
 
             //Caso exista
-             await _uniteOfWork.UserRepository.UpdateAsync(userBb);
+            userBb.UpdateUser(command.Email, command.Password, command.Roles);
+            await _uniteOfWork.UserRepository.UpdateAsync(userBb);
 
             //Persiste no banco
             _uniteOfWork.Commit();

@@ -15,6 +15,21 @@ namespace BrasilGeo.Domain.Entities
         public Password PasswordHash { get; private set; }
         IReadOnlyCollection<Role> Roles => _roles;
 
+        public void UpdateUser(Email email, Password password, List<string> roles)
+        {
+            Email = email; 
+
+            PasswordHash = password; 
+
+            //Por melhorar
+            foreach (var role in roles)
+            {
+               
+                AddRole(role);
+            }
+               
+        }
+
         public void AddRole(Role role) => _roles.Add(role);
         public bool Equals(User? other)
         {

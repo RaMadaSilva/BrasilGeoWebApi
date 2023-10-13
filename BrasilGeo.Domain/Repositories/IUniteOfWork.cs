@@ -4,6 +4,6 @@
     {
         IUserRepository UserRepository { get; }
 
-        void Commit(); 
+        Task CommitAsync(); 
     }
 }

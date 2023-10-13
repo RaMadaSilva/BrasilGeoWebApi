@@ -1,4 +1,5 @@
 ﻿using BrasilGeo.Domain.Entities;
+using BrasilGeo.Domain.Entities.IBGE;
 using Microsoft.EntityFrameworkCore;
 
 namespace BrasilGeo.Infra.Context
@@ -12,6 +13,7 @@ namespace BrasilGeo.Infra.Context
         }
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
+        public DbSet<LocationIBGE> LocationIBGEs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder mb)
         {

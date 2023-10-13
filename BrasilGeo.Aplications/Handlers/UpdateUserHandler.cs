@@ -33,7 +33,7 @@ namespace BrasilGeo.Aplications.Handlers
             await _uniteOfWork.UserRepository.UpdateAsync(userBb);
 
             //Persiste no banco
-            _uniteOfWork.Commit();
+            await _uniteOfWork.CommitAsync();
 
             return new CommandResult(true, "Usuario actualizado com sucesso", userBb); 
         }

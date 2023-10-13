@@ -37,7 +37,7 @@ namespace BrasilGeo.Aplications.Handlers
 
             //Caso não existe um usuario com o mesmo email 
             await _uinteOfWork.UserRepository.SaveAsync(user);
-            _uinteOfWork.Commit();
+            await _uinteOfWork.CommitAsync();
 
             //Associar os user aos roles
            await AssociateUserasync(user.Id, command.Roles);
@@ -53,7 +53,7 @@ namespace BrasilGeo.Aplications.Handlers
             var result = await _uinteOfWork.UserRepository.AssociateUserToRolesAsync(id, roles);
 
             if(result)
-                _uinteOfWork.Commit();
+               await _uinteOfWork.CommitAsync();
 
         }
     }

@@ -4,7 +4,7 @@ using BrasilGeo.Domain.Repositories;
 
 namespace BrasilGeo.Aplications.Handlers
 {
-    public class UpdateUserHandler : IHandler<UpdateuserCommand, CommandResult>
+    public class UpdateUserHandler : ICommandHandler<UpdateuserCommand, CommandResult>
     {
         private readonly IUniteOfWork _uniteOfWork;
 

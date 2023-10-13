@@ -4,7 +4,7 @@ using BrasilGeo.Domain.Repositories;
 
 namespace BrasilGeo.Aplications.Handlers
 {
-    public class DeleteuserHandler : IHandler<DeleteUserCommand, CommandResult>
+    public class DeleteuserHandler : ICommandHandler<DeleteUserCommand, CommandResult>
     {
         private readonly IUniteOfWork _uniteOfWork;
 

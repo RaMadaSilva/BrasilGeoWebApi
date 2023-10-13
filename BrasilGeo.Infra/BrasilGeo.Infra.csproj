@@ -14,7 +14,15 @@
     <Folder Include="Context\" />
     <Folder Include="Configurations\" />
     <Folder Include="IoC\" />
-    <Folder Include="Repositories\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkcore" Version="7.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkcore.design" Version="7.0.12">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkcore.SqlServer" Version="7.0.12" />
   </ItemGroup>
 
 </Project>

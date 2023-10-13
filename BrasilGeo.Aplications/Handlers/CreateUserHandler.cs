@@ -6,7 +6,7 @@ using BrasilGeo.Domain.Repositories;
 
 namespace BrasilGeo.Aplications.Handlers
 {
-    public class CreateUserHandler : IHandler<CreateUserCommand, CommandResult>
+    public class CreateUserHandler : ICommandHandler<CreateUserCommand, CommandResult>
     {
         private readonly IUniteOfWork _uinteOfWork;
 

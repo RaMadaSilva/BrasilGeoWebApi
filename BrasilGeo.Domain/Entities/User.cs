@@ -13,7 +13,7 @@ namespace BrasilGeo.Domain.Entities
 
         public Email Email { get; private set; }
         public Password PasswordHash { get; private set; }
-        IReadOnlyCollection<Role> Roles => _roles;
+        public ICollection<Role> Roles => _roles;
 
         public void UpdateUser(Email email, Password password, List<string> roles)
         {

@@ -1,6 +1,5 @@
 ﻿using BrasilGeo.Domain.Commands.Interfaces;
 
-
 namespace BrasilGeo.Aplications.Commands
 {
     public class CommandResult : ICommandResult

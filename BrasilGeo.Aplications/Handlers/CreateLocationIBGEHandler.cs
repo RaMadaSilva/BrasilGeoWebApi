@@ -1,12 +1,11 @@
 ﻿using BrasilGeo.Aplications.Commands;
-using BrasilGeo.Domain.Entities;
 using BrasilGeo.Domain.Entities.IBGE;
 using BrasilGeo.Domain.Handlers.Interfaces;
 using BrasilGeo.Domain.Repositories;
 
 namespace BrasilGeo.Aplications.Handlers
 {
-    public class CreateLocationIBGE : IHandler<CreateLocationIBGECommand, CommandResult>
+    public class CreateLocationIBGEHandler : ICommandHandler<CreateLocationIBGECommand, CommandResult>
     {
         private readonly IUniteOfWork _uinteOfWork;
 
@@ -30,6 +29,8 @@ namespace BrasilGeo.Aplications.Handlers
             //await AssociateUserasync(user.Id, command.Roles);
 
             //return new CommandResult(true, "Usuario Salvo com Sucesso", user);
+
+            throw new NotImplementedException();
         }
     }
 }

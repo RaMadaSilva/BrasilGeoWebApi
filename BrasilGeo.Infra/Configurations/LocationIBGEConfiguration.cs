@@ -10,7 +10,7 @@ namespace BrasilGeo.Infra.Configurations
         {
             builder.ToTable(nameof(LocationIBGE));
             builder.HasKey(property => property.Id);
-            builder.Property(property => property.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Property(property => property.Id).IsRequired();
             builder.Property(property => property.City).IsRequired();
             builder.Property(property => property.State).IsRequired();
         }

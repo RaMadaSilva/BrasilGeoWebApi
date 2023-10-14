@@ -31,10 +31,6 @@ namespace BrasilGeo.Infra.Configurations
                 .HasColumnName("PasswordHash")
                 .HasColumnType("NVARCHAR")
                 .HasMaxLength(500);
-
-            //Indexar
-            builder.HasIndex(x => x.Email, "IX_user_Email")
-                .IsUnique();
         }
     }
 }

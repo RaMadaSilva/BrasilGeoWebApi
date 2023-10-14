@@ -27,9 +27,6 @@ namespace BrasilGeo.Infra.Configurations
                 .HasColumnType("NVARCHAR")
                 .HasMaxLength(5);
 
-            //Indexar
-            builder.HasIndex(x => x.State, "IX_Local_State");
-            builder.HasIndex(x => x.City, "IX_Local_City");
         }
     }
 }

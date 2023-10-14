@@ -1,13 +1,20 @@
 using BrasilGeo.Api.Extensions;
-using Microsoft.Extensions.Configuration;
+using BrasilGeo.Infra.Context;
+using BrasilGeo.Infra.IoC;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
 
 // Add services to the container.
+
+
 builder.Services.AddControllers();
-builder.Services.AddApplicationServices(configuration);
+builder.Services.AddSwaggerExtensions();
+builder.Services.AddApplicationServices(configuration); 
 builder.Services.AddEndpointsApiExplorer();
+
+
 
 var app = builder.Build();
 
@@ -34,5 +41,21 @@ app.UseCors("CorsPolicy");
 app.UseAuthorization();
 
 app.MapControllers();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<BrazilGeoContext>();
+    var loggerFactory = services.GetRequiredService<ILoggerFactory>();
+    try
+    {
+        await context.Database.MigrateAsync();
+    }
+    catch (Exception exception)
+    {
+        var logger = loggerFactory.CreateLogger<Program>();
+        logger.LogError(exception, "An error occured during migration");
+    }
+}
 
 app.Run();

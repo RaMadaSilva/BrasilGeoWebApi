@@ -1,28 +1,11 @@
-﻿using BrasilGeo.Domain.Repositories;
-using BrasilGeo.Infra.Repositories;
-//using Microsoft.AspNetCore.Mvc;
-//using Microsoft.EntityFrameworkCore;
-using Microsoft.OpenApi.Models;
+﻿using Microsoft.OpenApi.Models;
 
 namespace BrasilGeo.Api.Extensions
 {
-    public static class ApplicationServicesExtensions
+    public  static class AddOpApiServiceExtensions
     {
-        public static IServiceCollection AddApplicationServices(this IServiceCollection services,
-            IConfiguration configuration)
+        public static IServiceCollection AddSwaggerExtensions(this IServiceCollection services)
         {
-            services.AddScoped<ILocationIBGERepository, LocationIBGERepository>();
-            services.AddScoped<IUserRepository, UserRepostitory>();
-
-            services.AddRouting(options => options.LowercaseUrls = true);
-
-            //services.AddDbContext<StoreContext>(options =>
-            //{
-            //    options.UseSqlServer(configuration["ConnectionStrings:DefaultConnection"]);
-            //});
-
-            services.AddEndpointsApiExplorer();
-
             services.AddSwaggerGen(options =>
             {
                 options.SwaggerDoc("v1", new OpenApiInfo
@@ -58,18 +41,8 @@ namespace BrasilGeo.Api.Extensions
                     }
                 });
             });
-
-            services.AddCors(opt =>
-            {
-                opt.AddPolicy("CorsPolicy", policy =>
-                {
-                    policy.AllowAnyHeader()
-                        .AllowAnyMethod()
-                        .WithOrigins(configuration["Cors:ClientUri"]);
-                });
-            });
-
             return services;
         }
     }
+       
 }

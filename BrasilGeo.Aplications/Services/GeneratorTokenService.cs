@@ -1,5 +1,4 @@
-﻿using BrasilGeo.Aplications.Shareds;
-using BrasilGeo.Domain.Entities;
+﻿using BrasilGeo.Domain.Entities;
 using BrasilGeo.Domain.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -12,11 +11,17 @@ namespace BrasilGeo.Aplications.Services
     public class GeneratorTokenService : IGeneratorTokenService
     {
         private readonly IConfiguration _configuration;
+
+        public GeneratorTokenService(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
         public string GenerateToken(User user)
         {
             var handler = new JwtSecurityTokenHandler();
 
-            var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration.SECRET)); 
+            var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_configuration["Jwt:Secret"])); 
 
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256); 
 

@@ -7,5 +7,6 @@ namespace BrasilGeo.Domain.Repositories
     {
         Task<LocationIBGE> GetLocationIBGEByCityNameAsync(string  cityName);
         Task<LocationIBGE> GetLocationIBGEByStateNameAsync(State state);
+        Task<LocationIBGE> GetLocationIBGEByCityNameAndStateName(string cityName, string stateName);
     }
 }

@@ -17,7 +17,8 @@ namespace BrasilGeo.Infra.Repositories
         public IUserRepository UserRepository 
             => _userRepository ?? new UserRepostitory(_context);
 
-        public ILocationIBGERepository LocationIBGERepository => _locationIBGERepository ?? new LocationIBGERepository(_context);
+        public ILocationIBGERepository LocationIBGERepository 
+            => _locationIBGERepository ?? new LocationIBGERepository(_context);
 
         public async Task CommitAsync()
         {

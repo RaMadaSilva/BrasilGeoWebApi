@@ -62,10 +62,8 @@ namespace BrasilGeo.Infra.Repositories
                     .Roles
                     .SingleOrDefaultAsync(x=>x.RoleName==role);
 
-                if (roleDb is null)
-                    return false; 
-
-                user.AddRole(roleDb);
+                if (roleDb !=null)
+                    user.AddRole(roleDb);
             }
             return true;
         }

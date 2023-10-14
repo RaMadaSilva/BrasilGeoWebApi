@@ -29,8 +29,7 @@ namespace BrasilGeo.Infra.Configurations
 
             //Indexar
             builder.HasIndex(x => x.State, "IX_Local_State");
-            builder.HasIndex(x => x.City, "IX_Local_City")
-                .IsUnique();
+            builder.HasIndex(x => x.City, "IX_Local_City");
         }
     }
 }

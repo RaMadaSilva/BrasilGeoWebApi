@@ -1,6 +1,7 @@
 ﻿using BrasilGeo.Aplications.Shareds;
 using BrasilGeo.Domain.Entities;
 using BrasilGeo.Domain.Services;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -10,6 +11,7 @@ namespace BrasilGeo.Aplications.Services
 {
     public class GeneratorTokenService : IGeneratorTokenService
     {
+        private readonly IConfiguration _configuration;
         public string GenerateToken(User user)
         {
             var handler = new JwtSecurityTokenHandler();

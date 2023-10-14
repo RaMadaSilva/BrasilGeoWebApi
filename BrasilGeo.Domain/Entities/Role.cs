@@ -13,6 +13,6 @@
 
         public static implicit operator string(Role role) => role.ToString(); 
 
-        ICollection<User> Users { get; } = new List<User>();
+        public ICollection<User> Users { get; } = new List<User>();
     }
 }

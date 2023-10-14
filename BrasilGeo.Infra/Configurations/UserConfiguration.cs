@@ -8,22 +8,33 @@ namespace BrasilGeo.Infra.Configurations
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-           builder.ToTable(nameof(User));
+            builder.ToTable(nameof(User));
 
-           builder.HasKey(x => x.Id);
+            builder.HasKey(x => x.Id);
 
-           builder.Property(x => x.Id)
+            builder.Property(x => x.Id)
+                 .IsRequired()
+                 .ValueGeneratedOnAdd()
+                 .HasColumnName("Id")
+                 .HasColumnType("BIGINT");
+
+            builder.OwnsOne(x=>x.Email)
+                .Property(x => x.Adress)
                 .IsRequired()
-                .ValueGeneratedOnAdd();
+                .HasColumnName("Email")
+                .HasColumnType("NVARCHAR")
+                .HasMaxLength(250);
 
-           builder.Property(x => x.Email)
-                .IsRequired();
+            builder.OwnsOne(x=>x.PasswordHash)
+                .Property(x => x.Pass)
+                .IsRequired()
+                .HasColumnName("PasswordHash")
+                .HasColumnType("NVARCHAR")
+                .HasMaxLength(500);
 
-           builder.Property(x => x.PasswordHash)
-                .IsRequired();
-
-            //Relacionamento
-
+            //Indexar
+            builder.HasIndex(x => x.Email, "IX_user_Email")
+                .IsUnique();
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using BrasilGeo.Domain.Entities;
 using BrasilGeo.Domain.Entities.IBGE;
+using Flunt.Notifications;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace BrasilGeo.Infra.Context
 {
@@ -18,6 +20,9 @@ namespace BrasilGeo.Infra.Context
         protected override void OnModelCreating(ModelBuilder mb)
         {
             base.OnModelCreating(mb);
+
+            mb.Ignore<Notification>();
+            mb.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
     }
 }

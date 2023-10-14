@@ -14,10 +14,30 @@ namespace BrasilGeo.Infra.Configurations
 
             builder.Property(x => x.Id)
                  .IsRequired()
+                 .HasColumnName("Id")
+                 .HasColumnType("BIGINT")
                  .ValueGeneratedOnAdd();
 
             builder.Property(x => x.RoleName)
-                 .IsRequired();
+                 .IsRequired()
+                 .HasColumnName("RoleName")
+                 .HasColumnType("NVARCHAR")
+                 .HasMaxLength(50);
+
+            //Relacionamento
+
+            builder.HasMany(x => x.Users)
+                .WithMany(x => x.Roles)
+                .UsingEntity<Dictionary<string, object>>("UserRole", user => 
+                user
+                .HasOne<User>()
+                .WithMany()
+                .HasForeignKey("UserId"),
+                role => role
+                .HasOne<Role>()
+                .WithMany()
+                .HasForeignKey("RoleId")
+                ); 
         }
     }
 }

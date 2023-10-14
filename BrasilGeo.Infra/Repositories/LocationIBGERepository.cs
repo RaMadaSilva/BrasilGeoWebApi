@@ -2,6 +2,7 @@
 using BrasilGeo.Domain.Repositories;
 using BrasilGeo.Domain.ValueObjects.LocationIBGE;
 using BrasilGeo.Infra.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace BrasilGeo.Infra.Repositories
 {
@@ -14,14 +15,34 @@ namespace BrasilGeo.Infra.Repositories
             _context = context;
         }
 
+        public async Task<LocationIBGE> GetLocationIBGEByCityNameAndStateName(string cityName, string stateName)
+        {
+            var location = await _context.LocationIBGEs
+                .Where(loc => loc.City == cityName && loc.State == stateName)
+                .FirstOrDefaultAsync();
+
+            return location;
+        }
+
         public async Task<LocationIBGE> GetLocationIBGEByCityNameAsync(string cityName)
         {
-            throw new NotImplementedException();
+
+            var location = await _context.LocationIBGEs
+                .Where(loc => loc.City == cityName)
+                .FirstOrDefaultAsync();
+
+            return location;
         }
 
         public async Task<LocationIBGE> GetLocationIBGEByStateNameAsync(State state)
         {
-            throw new NotImplementedException();
+
+            var location = await _context.LocationIBGEs
+                .Where(loc => loc.State == state)
+                .FirstOrDefaultAsync();
+
+            return location;
         }
     }
+
 }

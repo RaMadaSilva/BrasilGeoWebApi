@@ -1,4 +1,5 @@
-﻿using BrasilGeo.Domain.ValueObjects.LocationIBGE;
+﻿using BrasilGeo.Domain.ValueObjects;
+using BrasilGeo.Domain.ValueObjects.LocationIBGE;
 
 namespace BrasilGeo.Domain.Entities.IBGE
 {
@@ -12,6 +13,13 @@ namespace BrasilGeo.Domain.Entities.IBGE
 
         public State State { get; private set; }
         public string City { get; private set; }
+
+        public void UpdateLocationIBGE(State state, string city)
+        {
+            State = state;
+
+            City = city;
+        }
 
         public bool Equals(LocationIBGE? other)
         {

@@ -6,6 +6,7 @@ namespace BrasilGeo.Infra.Repositories
     public class UniteOfWork : IUniteOfWork
     {
         private IUserRepository _userRepository;
+        private ILocationIBGERepository _locationIBGERepository;
         private BrazilGeoContext _context;
 
         public UniteOfWork(BrazilGeoContext context)
@@ -14,7 +15,9 @@ namespace BrasilGeo.Infra.Repositories
         }
 
         public IUserRepository UserRepository 
-            => _userRepository ?? new UserRepostitory(_context); 
+            => _userRepository ?? new UserRepostitory(_context);
+
+        public ILocationIBGERepository LocationIBGERepository => _locationIBGERepository ?? new LocationIBGERepository(_context);
 
         public async Task CommitAsync()
         {

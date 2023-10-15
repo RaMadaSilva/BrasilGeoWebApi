@@ -1,4 +1,11 @@
-﻿using BrasilGeo.Domain.Repositories;
+﻿using BrasilGeo.Aplications.Adapter;
+using BrasilGeo.Aplications.Commands;
+using BrasilGeo.Aplications.Dtos;
+using BrasilGeo.Aplications.Handlers;
+using BrasilGeo.Aplications.Services;
+using BrasilGeo.Domain.Adapter;
+using BrasilGeo.Domain.Repositories;
+using BrasilGeo.Domain.Services;
 using BrasilGeo.Infra.Context;
 using BrasilGeo.Infra.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -14,8 +21,13 @@ namespace BrasilGeo.Infra.IoC
         public static IServiceCollection AddApplicationServices(this IServiceCollection services,
             IConfiguration configuration)
         {
+            services.AddScoped<IUniteOfWork, UniteOfWork>();
             services.AddScoped<ILocationIBGERepository, LocationIBGERepository>();
             services.AddScoped<IUserRepository, UserRepostitory>();
+            services.AddScoped<IGeneratorTokenService, GeneratorTokenService>(); 
+            services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<IAdapter<LoginCommand, LoginDto>, LoginToDtoAdaoterAdapter>(); 
+            services.AddScoped<LoginHandler, LoginHandler>();
 
             services.AddRouting(options => options.LowercaseUrls = true);
 

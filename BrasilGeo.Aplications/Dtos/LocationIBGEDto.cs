@@ -4,7 +4,8 @@ namespace BrasilGeo.Aplications.Dtos
 {
     public class LocationIBGEDto
     {
-        public string City { get; set; }
-        public State State { get; set; }
+        public long Id { get; set; }
+        public string City { get; set; } = string.Empty;
+        public State State { get; set; } = null!; 
     }
 }

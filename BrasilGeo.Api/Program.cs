@@ -1,15 +1,36 @@
 using BrasilGeo.Api.Extensions;
 using BrasilGeo.Infra.Context;
 using BrasilGeo.Infra.IoC;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
 
 // Add services to the container.
-
-
 builder.Services.AddControllers();
+
+builder.Services.AddAuthentication(x =>
+{
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(x =>
+{
+    x.RequireHttpsMetadata = false;
+    x.SaveToken = true;
+    x.TokenValidationParameters = new TokenValidationParameters()
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(configuration["Jwt:Secret"])),
+        ValidateAudience = false,
+        ValidateIssuer = false
+    }; 
+});
+builder.Services.AddAuthorization(); 
+
+
 builder.Services.AddSwaggerExtensions();
 builder.Services.AddApplicationServices(configuration); 
 builder.Services.AddEndpointsApiExplorer();
@@ -17,6 +38,8 @@ builder.Services.AddEndpointsApiExplorer();
 
 
 var app = builder.Build();
+app.UseAuthentication();
+app.UseAuthorization();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

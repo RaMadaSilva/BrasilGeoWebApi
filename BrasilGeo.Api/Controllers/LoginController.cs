@@ -1,5 +1,6 @@
 ﻿using BrasilGeo.Aplications.Commands;
 using BrasilGeo.Aplications.Handlers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BrasilGeo.Api.Controllers
@@ -9,6 +10,7 @@ namespace BrasilGeo.Api.Controllers
     public class LoginController : ControllerBase
     {
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> PostLogin([FromBody] LoginCommand command, 
             [FromServices] LoginHandler handler)
         {

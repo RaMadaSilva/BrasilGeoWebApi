@@ -2,6 +2,10 @@
 {
     public class Role: BaseEntity
     {
+        private Role()
+        {
+            
+        }
         public Role(string roleName)
         {
             RoleName = roleName;

@@ -5,6 +5,10 @@ namespace BrasilGeo.Domain.Entities.IBGE
 {
     public class LocationIBGE: BaseEntity, IEquatable<LocationIBGE>
     {
+        private LocationIBGE()
+        {
+            
+        }
         public LocationIBGE(State state, string city)
         {
             State = state;

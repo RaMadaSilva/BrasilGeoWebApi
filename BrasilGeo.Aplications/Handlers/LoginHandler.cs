@@ -34,13 +34,15 @@ namespace BrasilGeo.Aplications.Handlers
             var userBd = await _uniteOfWork.UserRepository.GetUserByEmailWithRoleAsync(command.Email);
 
             if (userBd is null)
-                return new CommandResult(false, "user ou senha invalida", string.Empty);
+                return new CommandResult(false, "user ou senha invalida", command);
 
-            //se o usuario estiver correcto tenho que confirma a senha. 
-            var senha = new Password(command.Password);
+            //se  Existir o usuario tenho que confirma a senha. 
+            Password senha = command.Password;
+
             var result = _account.ValidationPassword(senha, userBd.PasswordHash);
+
             if (!result)
-                return new CommandResult(false, "User ou senha invalida", string.Empty);
+                return new CommandResult(false, "User ou senha invalida", command);
 
             var token = _token.GenerateToken(userBd);
 

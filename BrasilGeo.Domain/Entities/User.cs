@@ -5,6 +5,8 @@ namespace BrasilGeo.Domain.Entities
     public class User : BaseEntity, IEquatable<User>
     {
         private readonly List<Role> _roles = new();
+        private User() { 
+        }
         public User(Email email, Password password)
         {
             Email = email;

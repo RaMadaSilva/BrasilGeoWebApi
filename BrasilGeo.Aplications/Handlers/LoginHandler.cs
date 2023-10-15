@@ -1,4 +1,5 @@
 ﻿using BrasilGeo.Aplications.Commands;
+using BrasilGeo.Domain.Adapter;
 using BrasilGeo.Domain.Handlers.Interfaces;
 using BrasilGeo.Domain.Repositories;
 using BrasilGeo.Domain.Services;
@@ -10,7 +11,8 @@ namespace BrasilGeo.Aplications.Handlers
     {
         private readonly IUniteOfWork _uniteOfWork;
         private readonly IGeneratorTokenService _token;
-        private readonly IAccountService _account; 
+        private readonly IAccountService _account;
+        private readonly IAdapter adapter; 
 
         public LoginHandler(IUniteOfWork uniteOfWork, 
                 IGeneratorTokenService token, 

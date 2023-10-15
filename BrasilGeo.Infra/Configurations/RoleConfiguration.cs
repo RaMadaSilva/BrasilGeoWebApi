@@ -8,7 +8,7 @@ namespace BrasilGeo.Infra.Configurations
     {
         public void Configure(EntityTypeBuilder<Role> builder)
         {
-            builder.ToTable(nameof(User));
+            builder.ToTable(nameof(Role));
 
             builder.HasKey(x => x.Id);
 

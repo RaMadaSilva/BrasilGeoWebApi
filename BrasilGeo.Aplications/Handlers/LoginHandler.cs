@@ -1,4 +1,5 @@
 ﻿using BrasilGeo.Aplications.Commands;
+using BrasilGeo.Aplications.Dtos;
 using BrasilGeo.Domain.Adapter;
 using BrasilGeo.Domain.Handlers.Interfaces;
 using BrasilGeo.Domain.Repositories;
@@ -12,15 +13,17 @@ namespace BrasilGeo.Aplications.Handlers
         private readonly IUniteOfWork _uniteOfWork;
         private readonly IGeneratorTokenService _token;
         private readonly IAccountService _account;
-        private readonly IAdapter adapter; 
+        private readonly IAdapter<LoginCommand, LoginDto> _adapter; 
 
         public LoginHandler(IUniteOfWork uniteOfWork, 
                 IGeneratorTokenService token, 
-                IAccountService account)
+                IAccountService account,
+                IAdapter<LoginCommand, LoginDto> adapter)
         {
             _uniteOfWork = uniteOfWork;
             _token = token;
             _account = account;
+            _adapter = adapter;
         }
 
         public async Task<CommandResult> HandleAsync(LoginCommand command)
@@ -35,8 +38,10 @@ namespace BrasilGeo.Aplications.Handlers
 
             var userBd = await _uniteOfWork.UserRepository.GetUserByEmailWithRoleAsync(command.Email);
 
+            var loginDto = _adapter.Adapte(command); 
+
             if (userBd is null)
-                return new CommandResult(false, "user ou senha invalida", command);
+                return new CommandResult(false, "user ou senha invalida", loginDto);
 
             //se  Existir o usuario tenho que confirma a senha. 
             Password senha = command.Password;
@@ -44,7 +49,7 @@ namespace BrasilGeo.Aplications.Handlers
             var result = _account.ValidationPassword(senha, userBd.PasswordHash);
 
             if (!result)
-                return new CommandResult(false, "User ou senha invalida", command);
+                return new CommandResult(false, "User ou senha invalida", loginDto);
 
             var token = _token.GenerateToken(userBd);
 

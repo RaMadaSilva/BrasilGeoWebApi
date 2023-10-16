@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BrasilGeo.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
     {
@@ -21,7 +21,7 @@ namespace BrasilGeo.Api.Controllers
         }
 
         [HttpPost]
-        [Authorize("Admin, Write")]
+        [AllowAnonymous]
         public async Task<IActionResult> PostUserAsync([FromBody] CreateUserCommand command, 
             [FromServices]CreateUserHandler handler)
         {
@@ -33,18 +33,27 @@ namespace BrasilGeo.Api.Controllers
             return Ok(result);
         }
         [HttpPut]
-        [Authorize("Admin, Write")]
+        [Authorize("Write")]
         public async Task<IActionResult> PutUserAsync([FromBody] UpdateuserCommand command,
             [FromServices] UpdateUserHandler handler)
         {
-            var result = await handler.HandleAsync(command);
+            try
+            {
+                var result = await handler.HandleAsync(command);
 
-            if (!result.Sucess)
-                return BadRequest(result);
+                if (!result.Sucess)
+                    return BadRequest(result);
 
-            return Ok(result);
+                return Ok(result);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message); 
+            }
+           
         }
-        [HttpPut]
+        [HttpDelete]
         [Authorize("Admin")]
         public async Task<IActionResult> DeleteUserAsync([FromBody] DeleteUserCommand command,
             [FromServices] DeleteuserHandler handler)

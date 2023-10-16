@@ -15,5 +15,6 @@ namespace BrasilGeo.Aplications.Adapter
                 Roles = (List<string>)source.Roles,
             }; 
         }
+
     }
 }

@@ -11,6 +11,8 @@ ConfigurationManager configuration = builder.Configuration;
 
 // Add services to the container.
 builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerExtensions();
 
 builder.Services.AddAuthentication(x =>
 {
@@ -31,15 +33,10 @@ builder.Services.AddAuthentication(x =>
 builder.Services.AddAuthorization(); 
 
 
-builder.Services.AddSwaggerExtensions();
 builder.Services.AddApplicationServices(configuration); 
-builder.Services.AddEndpointsApiExplorer();
-
-
 
 var app = builder.Build();
-app.UseAuthentication();
-app.UseAuthorization();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -56,6 +53,9 @@ if (app.Environment.IsDevelopment())
     });
 }
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.UseRouting();
 

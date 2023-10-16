@@ -29,7 +29,7 @@ namespace BrasilGeo.Aplications.Services
             {
                 Subject = ManageClains(user),
                 SigningCredentials = credentials,
-                Expires = DateTime.UtcNow.AddHours(5),
+                Expires = DateTime.UtcNow.AddHours(3),
 
             };
 

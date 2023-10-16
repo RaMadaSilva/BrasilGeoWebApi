@@ -12,7 +12,7 @@ namespace BrasilGeo.Api.Extensions
                 {
                     Version = "v1",
                     Title = "BrasilGeo API",
-                    Description = "An ASP.NET Core Web API for manage Location from IBGE"
+                    Description = "An ASP.NET Core Web API for manage Location from Brazil IBGE"
                 });
 
                 options.AddSecurityDefinition(name: "Bearer", securityScheme: new OpenApiSecurityScheme

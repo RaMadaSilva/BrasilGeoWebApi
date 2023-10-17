@@ -12,7 +12,7 @@ namespace BrasilGeo.Aplications.Adapter
                 {
                     Id = userDto.Id,
                     Email = userDto.Email,
-                    Roles = (List<string>)userDto.Roles
+                    Roles = userDto.Roles.Select(name=>name.RoleName).ToList()
                 }
             ); 
         }

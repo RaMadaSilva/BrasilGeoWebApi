@@ -22,5 +22,9 @@ namespace BrasilGeo.Domain.Entities
 
         public static implicit operator string(Role role) => role.ToString();
 
+        public override string ToString() 
+            => RoleName;
+        
+
     }
 }

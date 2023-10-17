@@ -26,9 +26,11 @@ namespace BrasilGeo.Domain.ValueObjects
         private static partial Regex EmailRegex();
 
         public static implicit operator String(Email email) 
-            => email.ToString(); 
+            => email.ToString();
 
         public static implicit operator Email(string adress)
             => new Email(adress);
+        public override string ToString()
+            => Adress.Trim().ToLower();
     }
 }

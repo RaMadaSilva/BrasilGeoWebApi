@@ -32,11 +32,13 @@ namespace BrasilGeo.Infra.Configurations
                 user
                 .HasOne<User>()
                 .WithMany()
-                .HasForeignKey("UserId"),
+                .HasForeignKey("UserId")
+                .OnDelete(DeleteBehavior.Cascade),
                 role => role
                 .HasOne<Role>()
                 .WithMany()
                 .HasForeignKey("RoleId")
+                .OnDelete(DeleteBehavior.Cascade)
                 ); 
         }
     }

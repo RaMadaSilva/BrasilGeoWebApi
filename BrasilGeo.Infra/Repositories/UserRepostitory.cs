@@ -22,19 +22,19 @@ namespace BrasilGeo.Infra.Repositories
                  .ToListAsync();
         }
 
-        public async Task<User> GetUserByEmailAsync(Email email)
+        public async Task<User> GetUserByEmailAsync(string email)
         {
             return await _context
                       .Users
-                      .FirstOrDefaultAsync(x => x.Email == email);
+                      .FirstOrDefaultAsync(x => x.Email.Adress == email);
         }
 
-        public async Task<User> GetUserByEmailWithRoleAsync(Email email)
+        public async Task<User> GetUserByEmailWithRoleAsync(string email)
         {
             return await _context
                    .Users
                    .Include(x => x.Roles)
-                   .FirstOrDefaultAsync(x => x.Email == email);
+                   .FirstOrDefaultAsync(x => x.Email.Adress == email);
         }
 
         public async Task<User> GetUserByIdWithRoleAsync(long id)

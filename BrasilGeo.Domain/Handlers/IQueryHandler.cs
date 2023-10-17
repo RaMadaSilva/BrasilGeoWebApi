@@ -2,8 +2,8 @@
 
 namespace BrasilGeo.Domain.Handlers
 {
-    public interface IQueryHandler<TQuery, TQueryResult> 
+    public interface IQueryHandler<TQuery, TDto> 
     {
-        Task<TQueryResult> HandleAsync(TQuery query);
+        Task<TDto> HandleAsync(TQuery query);
     }
 }

@@ -1,4 +1,6 @@
 ﻿using BrasilGeo.Aplications.Commands;
+using BrasilGeo.Aplications.Dtos;
+using BrasilGeo.Domain.Adapter;
 using BrasilGeo.Domain.Commands;
 using BrasilGeo.Domain.Entities;
 using BrasilGeo.Domain.Handlers.Interfaces;
@@ -9,10 +11,12 @@ namespace BrasilGeo.Aplications.Handlers
     public class CreateUserHandler : ICommandHandler<CreateUserCommand, CommandResult>
     {
         private readonly IUniteOfWork _uinteOfWork;
+        private readonly IAdapter<User, UserDto> _adapter;
 
-        public CreateUserHandler(IUniteOfWork uinteOfWork)
+        public CreateUserHandler(IUniteOfWork uinteOfWork, IAdapter<User, UserDto> adapter)
         {
             _uinteOfWork = uinteOfWork;
+            _adapter = adapter;
         }
 
         public async Task<CommandResult> HandleAsync(CreateUserCommand command)
@@ -42,7 +46,7 @@ namespace BrasilGeo.Aplications.Handlers
             //Associar os user aos roles
            await AssociateUserasync(user.Id, command.Roles);
 
-            return new CommandResult(true, "Usuario Salvo com Sucesso", user); 
+            return new CommandResult(true, "Usuario Salvo com Sucesso", _adapter.Adapte(user)); 
 
 
         }

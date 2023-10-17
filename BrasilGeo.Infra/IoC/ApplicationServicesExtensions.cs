@@ -26,16 +26,17 @@ namespace BrasilGeo.Infra.IoC
             services.AddScoped<IUniteOfWork, UniteOfWork>();
             services.AddScoped<ILocationIBGERepository, LocationIBGERepository>();
             services.AddScoped<IUserRepository, UserRepostitory>();
-            services.AddScoped<IGeneratorTokenService, GeneratorTokenService>(); 
+            services.AddScoped<IGeneratorTokenService, GeneratorTokenService>();
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IAdapter<LoginCommand, LoginDto>, LoginToDtoAdaoterAdapter>();
+            services.AddScoped<IAdapter<User, UserDto>, UserToDtoAdapter>();
             services.AddScoped<IAdapter<IEnumerable<User>, IEnumerable<UserDto>>, UserDtoToListAdapter>();
             services.AddScoped<LoginHandler>();
             services.AddScoped<CreateUserHandler>();
-            services.AddScoped<DeleteuserHandler >();
-            services.AddScoped<UpdateUserHandler >();
+            services.AddScoped<DeleteuserHandler>();
+            services.AddScoped<UpdateUserHandler>();
             services.AddScoped<UserQueryHandler>();
- 
+
 
 
 
@@ -48,7 +49,7 @@ namespace BrasilGeo.Infra.IoC
 
             services.AddEndpointsApiExplorer();
 
-         
+
             services.AddCors(opt =>
             {
                 opt.AddPolicy("CorsPolicy", policy =>

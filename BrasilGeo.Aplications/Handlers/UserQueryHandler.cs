@@ -21,7 +21,7 @@ namespace BrasilGeo.Aplications.Handlers
 
         public async Task<IEnumerable<UserDto>> HandleAsync(UserQuery query)
         {
-            var resutl = await _uniteOfWork.UserRepository.GetAllAsync();
+            var resutl = await _uniteOfWork.UserRepository.GetAllUserWithRoleAsync();
             return _adapter.Adapte(resutl); 
         }
     }

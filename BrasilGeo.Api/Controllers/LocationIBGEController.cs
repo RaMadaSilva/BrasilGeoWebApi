@@ -23,7 +23,7 @@ namespace BrasilGeo.Api.Controllers
             if (!result.Sucess)
                 return BadRequest(result);
 
-            return Ok(result);
+            return Created($"/{result.Sucess}", result);
         }
 
         [HttpPut]

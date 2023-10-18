@@ -30,7 +30,11 @@ builder.Services.AddAuthentication(x =>
         ValidateIssuer = false
     }; 
 });
-builder.Services.AddAuthorization(); 
+builder.Services.AddAuthorization(option=> {
+    option.AddPolicy("Admin", policy => policy.RequireClaim("Admin"));
+    option.AddPolicy("Write", policy => policy.RequireClaim("Write"));
+    option.AddPolicy("Reader", policy => policy.RequireClaim("Reader")); 
+    }); 
 
 
 builder.Services.AddApplicationServices(configuration); 

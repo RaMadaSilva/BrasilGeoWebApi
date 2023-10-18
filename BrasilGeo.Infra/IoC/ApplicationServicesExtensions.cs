@@ -2,8 +2,10 @@
 using BrasilGeo.Aplications.Commands;
 using BrasilGeo.Aplications.Dtos;
 using BrasilGeo.Aplications.Handlers;
+using BrasilGeo.Aplications.Queries;
 using BrasilGeo.Aplications.Services;
 using BrasilGeo.Domain.Adapter;
+using BrasilGeo.Domain.Entities;
 using BrasilGeo.Domain.Repositories;
 using BrasilGeo.Domain.Services;
 using BrasilGeo.Infra.Context;
@@ -26,12 +28,15 @@ namespace BrasilGeo.Infra.IoC
             services.AddScoped<IUserRepository, UserRepostitory>();
             services.AddScoped<IGeneratorTokenService, GeneratorTokenService>(); 
             services.AddScoped<IAccountService, AccountService>();
-            services.AddScoped<IAdapter<LoginCommand, LoginDto>, LoginToDtoAdaoterAdapter>(); 
+            services.AddScoped<IAdapter<LoginCommand, LoginDto>, LoginToDtoAdaoterAdapter>();
+            services.AddScoped<IAdapter<IEnumerable<User>, IEnumerable<UserDto>>, UserDtoToListAdapter>();
             services.AddScoped<LoginHandler>();
             services.AddScoped<CreateUserHandler>();
             services.AddScoped<DeleteuserHandler >();
             services.AddScoped<UpdateUserHandler >();
-            services.AddScoped<UserQueryHandler >();
+            services.AddScoped<UserQueryHandler>();
+ 
+
 
 
             services.AddRouting(options => options.LowercaseUrls = true);

@@ -1,4 +1,5 @@
 ﻿using BrasilGeo.Domain.ValueObjects;
+using System.Text.Json.Serialization;
 
 namespace BrasilGeo.Domain.Entities
 {
@@ -20,22 +21,15 @@ namespace BrasilGeo.Domain.Entities
         public void UpdateUser(Email email, Password password, List<string> roles)
         {
             Email = email; 
-
             PasswordHash = password; 
-
-            //Por melhorar
             foreach (var role in roles)
-            {
-               
-                AddRole(role);
-            }
-               
+                AddRole(role);     
         }
 
         public void AddRole(Role role) => _roles.Add(role);
         public bool Equals(User? other)
         {
-            return Email == other.Email;
+            return Email == other?.Email;
         }
     }
 }

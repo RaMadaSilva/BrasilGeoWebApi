@@ -38,7 +38,8 @@ namespace BrasilGeo.Aplications.Handlers
 
             var userBd = await _uniteOfWork.UserRepository.GetUserByEmailWithRoleAsync(command.Email);
 
-            var loginDto = _adapter.Adapte(command); 
+            var loginDto = _adapter.Adapte(command);
+            loginDto.Password = "**********"; //mascarar a senha
 
             if (userBd is null)
                 return new CommandResult(false, "user ou senha invalida", loginDto);

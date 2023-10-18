@@ -10,7 +10,6 @@ namespace BrasilGeo.Aplications.Adapter
         {
             return new LocationIBGEDto
             {
-                Id = source.Id,
                 City = source.City,
                 State = source.State
             };

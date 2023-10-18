@@ -1,5 +1,7 @@
 ﻿using BrasilGeo.Aplications.Commands;
 using BrasilGeo.Aplications.Handlers.LocationIBGEHandler;
+using BrasilGeo.Aplications.Queries;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BrasilGeo.Api.Controllers
@@ -12,6 +14,15 @@ namespace BrasilGeo.Api.Controllers
         public string Get(int id)
         {
             return "value";
+        }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> GetAllLocationsAsync([FromQuery] LocationIBGEQuery query,
+            [FromServices] LocationIBGEQueryHandler handler)
+        {
+            var result = await handler.HandleAsync(query);
+            return Ok(result);
         }
 
         [HttpPost]

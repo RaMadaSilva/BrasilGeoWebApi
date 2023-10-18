@@ -11,6 +11,7 @@ namespace BrasilGeo.Api.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
+
         [HttpGet]
         [Authorize]
         public async Task<IActionResult> GetAllUserAsync([FromQuery]UserQuery query, 

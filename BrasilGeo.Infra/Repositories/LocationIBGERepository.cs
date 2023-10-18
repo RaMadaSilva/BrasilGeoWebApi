@@ -22,6 +22,8 @@ namespace BrasilGeo.Infra.Repositories
             return locations;
         }
 
+
+
         public async Task<LocationIBGE> GetLocationIBGEByCityNameAndStateName(string cityName, string stateName)
         {
             var location = await _context.LocationIBGEs

@@ -1,10 +1,12 @@
 ﻿using BrasilGeo.Aplications.Adapter;
 using BrasilGeo.Aplications.Commands.UserCommands;
 using BrasilGeo.Aplications.Dtos;
+using BrasilGeo.Aplications.Handlers.LocationIBGEHandler;
 using BrasilGeo.Aplications.Handlers.UserHandler;
 using BrasilGeo.Aplications.Services;
 using BrasilGeo.Domain.Adapter;
 using BrasilGeo.Domain.Entities;
+using BrasilGeo.Domain.Entities.IBGE;
 using BrasilGeo.Domain.Repositories;
 using BrasilGeo.Domain.Services;
 using BrasilGeo.Infra.Context;
@@ -30,11 +32,21 @@ namespace BrasilGeo.Infra.IoC
             services.AddScoped<IAdapter<LoginCommand, LoginDto>, LoginToDtoAdaoterAdapter>();
             services.AddScoped<IAdapter<User, UserDto>, UserToDtoAdapter>();
             services.AddScoped<IAdapter<IEnumerable<User>, IEnumerable<UserDto>>, UserDtoToListAdapter>();
+            services.AddScoped<IAdapter<LocationIBGE, LocationIBGEDto>, LocationIBGEToDtoAdapter>();
+            services.AddScoped<IAdapter<IEnumerable<LocationIBGE>, IEnumerable<LocationIBGEDto>>, LocationsToLocationsDtosListAdapter>();
             services.AddScoped<LoginHandler>();
             services.AddScoped<CreateUserHandler>();
             services.AddScoped<DeleteuserHandler>();
             services.AddScoped<UpdateUserHandler>();
             services.AddScoped<UserQueryHandler>();
+            services.AddScoped<CreateLocationIBGEHandler>();
+            services.AddScoped<UpdateLocationIBGEHandler>();
+            services.AddScoped<DeleteLocationIBGEHandler>();
+            services.AddScoped<LocationIBGECodeQueryHandler>();
+            services.AddScoped<LocationIBGEStateQueryHandler>();
+            services.AddScoped<LocationIBGECityQueryHandler>();
+            services.AddScoped<LocationIBGEWithParameterQueryHandler>();
+
 
 
 

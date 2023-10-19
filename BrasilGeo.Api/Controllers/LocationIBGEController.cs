@@ -12,8 +12,8 @@ namespace BrasilGeo.Api.Controllers
     public class LocationIBGEController : ControllerBase
     {
 
-        [HttpGet("{id}")]
-        [Authorize(Policy = "RequireReader")]
+        [HttpGet("code")]
+        [Authorize]
         public async Task<IActionResult> GetLocationsByCodeAsync([FromQuery] LocationIBGECodeQuery query,
             [FromServices] LocationIBGECodeQueryHandler handler)
         {

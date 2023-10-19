@@ -22,7 +22,7 @@ namespace BrasilGeo.Aplications.Handlers.LocationIBGEHandler
 
         public async Task<IEnumerable<LocationIBGEDto>> HandleAsync(LocationIBGEStateQuery query)
         {
-            var result = await _uniteOfWork.LocationIBGERepository.GetLocationsIBGEByState(query.State);
+            var result = await _uniteOfWork.LocationIBGERepository.GetLocationsIBGEByStateAsync(query.State);
 
             return _adapter.Adapte(result); 
         }

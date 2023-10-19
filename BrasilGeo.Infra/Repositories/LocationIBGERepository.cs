@@ -22,7 +22,7 @@ namespace BrasilGeo.Infra.Repositories
             return locations;
         }
 
-        public async Task<List<LocationIBGE>> GetLocationsIBGEByState(string state)
+        public async Task<List<LocationIBGE>> GetLocationsIBGEByStateAsync(string state)
         {
 
             return await _context.LocationIBGEs
@@ -30,7 +30,7 @@ namespace BrasilGeo.Infra.Repositories
                           .ToListAsync();
         }
 
-        public async Task<LocationIBGE> GetLocationsIBGEById(long Id)
+        public async Task<LocationIBGE> GetLocationsIBGEByIdAsync(long Id)
         {
             return await _context.LocationIBGEs
                 .Where(location => location.Id == Id)
@@ -40,7 +40,7 @@ namespace BrasilGeo.Infra.Repositories
         public async Task<LocationIBGE> GetLocationIBGEByCityNameAndStateNameAsync(string cityName, string stateName)
         {
             var location = await _context.LocationIBGEs
-                .Where(loc => loc.City == cityName && loc.State == stateName)
+                .Where(loc => loc.City == cityName && loc.State.Uf == stateName)
                 .FirstOrDefaultAsync();
 
             return location;

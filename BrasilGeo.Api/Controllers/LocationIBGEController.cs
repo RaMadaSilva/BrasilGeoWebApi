@@ -1,7 +1,6 @@
-﻿using Azure.Core;
-using BrasilGeo.Aplications.Commands;
+﻿using BrasilGeo.Aplications.Commands.LocationIBGECommands;
 using BrasilGeo.Aplications.Handlers.LocationIBGEHandler;
-using BrasilGeo.Aplications.Queries;
+using BrasilGeo.Aplications.Queries.LocationIBGEQueries;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -12,16 +11,28 @@ namespace BrasilGeo.Api.Controllers
     [ApiController]
     public class LocationIBGEController : ControllerBase
     {
-        [HttpGet("{id}")]
+        [HttpGet("teste")]
         public string Get(int id)
         {
             return "value";
         }
+        [HttpGet("{id}")]
+        [Authorize(Policy = "RequireReader")]
+        public async Task<IActionResult> GetLocationsByCodeAsync([FromQuery] LocationIBGECodeQuery query,
+            [FromServices] LocationIBGECodeQueryHandler handler)
+        {
+            var result = await handler.HandleAsync(query);
+
+            if (result is null)
+                return BadRequest(result);
+
+            return Ok(result);
+        }
 
         [HttpGet]
         [Authorize(Policy = "RequireReader")]
-        public async Task<IActionResult> GetAllLocationsAsync([FromQuery] LocationIBGEReadQuery query,
-            [FromServices] LocationIBGEQueryHandler handler)
+        public async Task<IActionResult> GetAllLocationsAsync([FromQuery] LocationIBGEParameterQuery query,
+            [FromServices] LocationIBGEWithParameterQueryHandler handler)
         {
             var result = await handler.HandleAsync(query);
 
@@ -31,9 +42,10 @@ namespace BrasilGeo.Api.Controllers
             return Ok(result);
         }
 
+
         [HttpPost]
         [Authorize(Policy = "RequireWrite")]
-        public async Task<IActionResult> CreateLocation([FromBody] CreateLocationIBGECommand command, 
+        public async Task<IActionResult> CreateLocation([FromBody] CreateLocationIBGECommand command,
             [FromServices] CreateLocationIBGEHandler handler)
         {
             var result = await handler.HandleAsync(command);
@@ -46,7 +58,7 @@ namespace BrasilGeo.Api.Controllers
 
         [HttpPut]
         [Authorize(Policy = "RequireWrite")]
-        public async Task<IActionResult> UpdateLocation([FromBody] UpdateLocationIBGECommand command, 
+        public async Task<IActionResult> UpdateLocation([FromBody] UpdateLocationIBGECommand command,
             [FromServices] UpdateLocationIBGEHandler handler)
         {
             try
@@ -66,8 +78,8 @@ namespace BrasilGeo.Api.Controllers
         }
 
         [HttpDelete]
-        [Authorize(Policy ="RequireAdmin")]
-        public async Task<IActionResult>  DeleteLocation([FromBody] DeleteLocationIBGECommand command,
+        [Authorize(Policy = "RequireAdmin")]
+        public async Task<IActionResult> DeleteLocation([FromBody] DeleteLocationIBGECommand command,
             [FromServices] DeleteLocationIBGEHandler handler)
         {
             var result = await handler.HandleAsync(command);

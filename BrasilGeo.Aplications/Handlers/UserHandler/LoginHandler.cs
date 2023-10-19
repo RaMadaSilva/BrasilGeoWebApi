@@ -1,4 +1,5 @@
 ﻿using BrasilGeo.Aplications.Commands;
+using BrasilGeo.Aplications.Commands.UserCommands;
 using BrasilGeo.Aplications.Dtos;
 using BrasilGeo.Domain.Adapter;
 using BrasilGeo.Domain.Handlers.Interfaces;
@@ -6,7 +7,7 @@ using BrasilGeo.Domain.Repositories;
 using BrasilGeo.Domain.Services;
 using BrasilGeo.Domain.ValueObjects;
 
-namespace BrasilGeo.Aplications.Handlers
+namespace BrasilGeo.Aplications.Handlers.UserHandler
 {
     public class LoginHandler : ICommandHandler<LoginCommand, CommandResult>
     {

@@ -1,8 +1,7 @@
 ﻿using BrasilGeo.Aplications.Adapter;
-using BrasilGeo.Aplications.Commands;
+using BrasilGeo.Aplications.Commands.UserCommands;
 using BrasilGeo.Aplications.Dtos;
-using BrasilGeo.Aplications.Handlers;
-using BrasilGeo.Aplications.Queries;
+using BrasilGeo.Aplications.Handlers.UserHandler;
 using BrasilGeo.Aplications.Services;
 using BrasilGeo.Domain.Adapter;
 using BrasilGeo.Domain.Entities;

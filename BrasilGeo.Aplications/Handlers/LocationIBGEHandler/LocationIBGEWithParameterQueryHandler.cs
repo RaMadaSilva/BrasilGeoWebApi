@@ -1,5 +1,6 @@
 ﻿using BrasilGeo.Aplications.Dtos;
 using BrasilGeo.Aplications.Queries;
+using BrasilGeo.Aplications.Queries.LocationIBGEQueries;
 using BrasilGeo.Domain.Adapter;
 using BrasilGeo.Domain.Entities.IBGE;
 using BrasilGeo.Domain.Enums;
@@ -8,19 +9,19 @@ using BrasilGeo.Domain.Repositories;
 
 namespace BrasilGeo.Aplications.Handlers.LocationIBGEHandler
 {
-    public class LocationIBGEQueryHandler  : IQueryHandler<LocationIBGEReadQuery, IEnumerable<LocationIBGEDto>>
+    public class LocationIBGEWithParameterQueryHandler  : IQueryHandler<LocationIBGEParameterQuery, IEnumerable<LocationIBGEDto>>
     {
         private readonly IUniteOfWork _uniteOfWork;
         private readonly IAdapter<IEnumerable<LocationIBGE>, IEnumerable<LocationIBGEDto>> _adapter;
 
-        public LocationIBGEQueryHandler(IUniteOfWork uniteOfWork,
+        public LocationIBGEWithParameterQueryHandler(IUniteOfWork uniteOfWork,
             IAdapter<IEnumerable<LocationIBGE>, IEnumerable<LocationIBGEDto>> adapter)
         {
             _uniteOfWork = uniteOfWork;
             _adapter = adapter;
         }
 
-        public async Task<IEnumerable<LocationIBGEDto>> HandleAsync(LocationIBGEReadQuery query)
+        public async Task<IEnumerable<LocationIBGEDto>> HandleAsync(LocationIBGEParameterQuery query)
         {
             if (!Enum.TryParse(query.Sort, true, out ESortOptions sortOptions))
                 return null;

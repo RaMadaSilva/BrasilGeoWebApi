@@ -1,11 +1,10 @@
 ﻿using BrasilGeo.Aplications.Dtos;
-using BrasilGeo.Aplications.Queries;
+using BrasilGeo.Aplications.Queries.UserQueries;
 using BrasilGeo.Domain.Adapter;
 using BrasilGeo.Domain.Entities;
-using BrasilGeo.Domain.Handlers;
 using BrasilGeo.Domain.Repositories;
 
-namespace BrasilGeo.Aplications.Handlers
+namespace BrasilGeo.Aplications.Handlers.UserHandler
 {
     public class UserQueryHandler 
     {

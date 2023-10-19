@@ -1,5 +1,5 @@
-﻿using BrasilGeo.Aplications.Commands;
-using BrasilGeo.Aplications.Handlers;
+﻿using BrasilGeo.Aplications.Commands.UserCommands;
+using BrasilGeo.Aplications.Handlers.UserHandler;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

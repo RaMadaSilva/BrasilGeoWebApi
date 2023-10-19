@@ -1,7 +1,7 @@
-﻿using BrasilGeo.Aplications.Commands;
-using BrasilGeo.Aplications.Handlers;
-using BrasilGeo.Aplications.Queries;
-using BrasilGeo.Domain.Commands;
+﻿using BrasilGeo.Aplications.Commands.UserCommands;
+using BrasilGeo.Aplications.Handlers.UserHandler;
+using BrasilGeo.Aplications.Queries.UserQueries;
+using BrasilGeo.Domain.Commands.UserCommands;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

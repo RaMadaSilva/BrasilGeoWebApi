@@ -2,17 +2,16 @@
 using Flunt.Notifications;
 using Flunt.Validations;
 
-namespace BrasilGeo.Domain.Commands
+namespace BrasilGeo.Aplications.Commands.UserCommands
 {
-    public class CreateUserCommand : Notifiable<Notification>, ICommand
+    public class LoginCommand : Notifiable<Notification>, ICommand
     {
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public List<string> Roles { get; set; } = new(); 
+        public string Email { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
 
         public void Valid()
         {
-            AddNotifications(new Contract<CreateUserCommand>()
+            AddNotifications(new Contract<LoginCommand>()
                 .Requires()
                 .IsEmail(Email, "E-mail", "Campo de Email")
                 .IsGreaterThan(Password, 8, "Passwors", "Deve conter mais de 8 caracteres"));

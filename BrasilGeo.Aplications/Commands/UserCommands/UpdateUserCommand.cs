@@ -1,9 +1,9 @@
-﻿using BrasilGeo.Domain.Commands;
-using BrasilGeo.Domain.Commands.Interfaces;
+﻿using BrasilGeo.Domain.Commands.Interfaces;
+using BrasilGeo.Domain.Commands.UserCommands;
 using Flunt.Notifications;
 using Flunt.Validations;
 
-namespace BrasilGeo.Aplications.Commands
+namespace BrasilGeo.Aplications.Commands.UserCommands
 {
     public class UpdateuserCommand : Notifiable<Notification>, ICommand
     {

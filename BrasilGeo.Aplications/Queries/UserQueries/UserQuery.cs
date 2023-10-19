@@ -2,7 +2,7 @@
 using BrasilGeo.Domain.Queries;
 using System.Linq.Expressions;
 
-namespace BrasilGeo.Aplications.Queries
+namespace BrasilGeo.Aplications.Queries.UserQueries
 {
     public  class UserQuery : IQuery
     {

@@ -1,12 +1,12 @@
 ﻿using BrasilGeo.Aplications.Commands;
 using BrasilGeo.Aplications.Dtos;
 using BrasilGeo.Domain.Adapter;
-using BrasilGeo.Domain.Commands;
+using BrasilGeo.Domain.Commands.UserCommands;
 using BrasilGeo.Domain.Entities;
 using BrasilGeo.Domain.Handlers.Interfaces;
 using BrasilGeo.Domain.Repositories;
 
-namespace BrasilGeo.Aplications.Handlers
+namespace BrasilGeo.Aplications.Handlers.UserHandler
 {
     public class CreateUserHandler : ICommandHandler<CreateUserCommand, CommandResult>
     {

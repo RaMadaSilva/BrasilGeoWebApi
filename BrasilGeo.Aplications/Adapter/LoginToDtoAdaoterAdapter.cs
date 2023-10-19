@@ -1,4 +1,4 @@
-﻿using BrasilGeo.Aplications.Commands;
+﻿using BrasilGeo.Aplications.Commands.UserCommands;
 using BrasilGeo.Aplications.Dtos;
 using BrasilGeo.Domain.Adapter;
 

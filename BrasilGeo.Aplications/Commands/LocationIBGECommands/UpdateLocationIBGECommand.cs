@@ -2,7 +2,7 @@
 using Flunt.Notifications;
 using Flunt.Validations;
 
-namespace BrasilGeo.Aplications.Commands
+namespace BrasilGeo.Aplications.Commands.LocationIBGECommands
 {
     public class UpdateLocationIBGECommand : Notifiable<Notification>, ICommand
     {

@@ -1,8 +1,10 @@
-﻿using BrasilGeo.Aplications.Commands;
+﻿using Azure.Core;
+using BrasilGeo.Aplications.Commands;
 using BrasilGeo.Aplications.Handlers.LocationIBGEHandler;
 using BrasilGeo.Aplications.Queries;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 
 namespace BrasilGeo.Api.Controllers
 {
@@ -18,10 +20,14 @@ namespace BrasilGeo.Api.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<IActionResult> GetAllLocationsAsync([FromQuery] LocationIBGEQuery query,
+        public async Task<IActionResult> GetAllLocationsAsync([FromQuery] LocationIBGEReadQuery query,
             [FromServices] LocationIBGEQueryHandler handler)
         {
             var result = await handler.HandleAsync(query);
+
+            if (result.IsNullOrEmpty())
+                return BadRequest(result);
+
             return Ok(result);
         }
 

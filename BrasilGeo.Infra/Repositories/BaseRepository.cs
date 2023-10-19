@@ -1,5 +1,6 @@
 ﻿using BrasilGeo.Domain.Entities;
 using BrasilGeo.Domain.Repositories;
+using BrasilGeo.Domain.Specifications;
 using BrasilGeo.Infra.Context;
 using Microsoft.EntityFrameworkCore;
 
@@ -43,6 +44,26 @@ namespace BrasilGeo.Infra.Repositories
         {
             await Task.CompletedTask; 
             _set.Remove(entity); 
+        }
+
+        public async Task<TEntity> GetEntityWithSpecification(ISpecification<TEntity> specification)
+        {
+            return await ApplySpecification(specification).SingleOrDefaultAsync();
+        }
+
+        public async Task<IEnumerable<TEntity>> ListAsync(ISpecification<TEntity> specification)
+        {
+            return await ApplySpecification(specification).ToListAsync();
+        }
+
+        public async Task<int> CountAsync(ISpecification<TEntity> specification)
+        {
+            return await ApplySpecification(specification).CountAsync();
+        }
+
+        private IQueryable<TEntity> ApplySpecification(ISpecification<TEntity> specification)
+        {
+            return SpecificationEvaluator<TEntity>.GetQuery(_context.Set<TEntity>().AsQueryable(), specification);
         }
     }
 }

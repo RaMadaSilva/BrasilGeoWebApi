@@ -1,4 +1,7 @@
 ﻿using BrasilGeo.Aplications.Commands;
+using BrasilGeo.Aplications.Dtos;
+using BrasilGeo.Domain.Adapter;
+using BrasilGeo.Domain.Entities;
 using BrasilGeo.Domain.Handlers.Interfaces;
 using BrasilGeo.Domain.Repositories;
 
@@ -7,10 +10,12 @@ namespace BrasilGeo.Aplications.Handlers
     public class DeleteuserHandler : ICommandHandler<DeleteUserCommand, CommandResult>
     {
         private readonly IUniteOfWork _uniteOfWork;
+        private readonly IAdapter<User, UserDto> _adapter; 
 
-        public DeleteuserHandler(IUniteOfWork uniteOfWork)
+        public DeleteuserHandler(IUniteOfWork uniteOfWork, IAdapter<User, UserDto> adapter)
         {
             _uniteOfWork = uniteOfWork;
+            _adapter = adapter;
         }
 
         public async Task<CommandResult> HandleAsync(DeleteUserCommand command)
@@ -33,7 +38,7 @@ namespace BrasilGeo.Aplications.Handlers
             //Persistir
             await _uniteOfWork.CommitAsync();
 
-            return new CommandResult(true, "usuario Removido com sucesso", userBd); 
+            return new CommandResult(true, "usuario Removido com sucesso", _adapter.Adapte(userBd)); 
 
         }
     }

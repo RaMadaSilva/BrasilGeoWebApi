@@ -1,4 +1,7 @@
 ﻿using BrasilGeo.Aplications.Commands;
+using BrasilGeo.Aplications.Dtos;
+using BrasilGeo.Domain.Adapter;
+using BrasilGeo.Domain.Entities;
 using BrasilGeo.Domain.Handlers.Interfaces;
 using BrasilGeo.Domain.Repositories;
 
@@ -7,10 +10,12 @@ namespace BrasilGeo.Aplications.Handlers
     public class UpdateUserHandler : ICommandHandler<UpdateuserCommand, CommandResult>
     {
         private readonly IUniteOfWork _uniteOfWork;
+        private readonly IAdapter<User, UserDto> _adapter;
 
-        public UpdateUserHandler(IUniteOfWork uniteOfWork)
+        public UpdateUserHandler(IUniteOfWork uniteOfWork, IAdapter<User, UserDto> adapter)
         {
             _uniteOfWork = uniteOfWork;
+            _adapter = adapter;
         }
 
         public async Task<CommandResult> HandleAsync(UpdateuserCommand command)
@@ -35,7 +40,7 @@ namespace BrasilGeo.Aplications.Handlers
             //Persiste no banco
             await _uniteOfWork.CommitAsync();
 
-            return new CommandResult(true, "Usuario actualizado com sucesso", userBb); 
+            return new CommandResult(true, "Usuario actualizado com sucesso", _adapter.Adapte(userBb)); 
         }
     }
 }

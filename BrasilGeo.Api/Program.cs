@@ -4,6 +4,7 @@ using BrasilGeo.Infra.IoC;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,10 +31,10 @@ builder.Services.AddAuthentication(x =>
         ValidateIssuer = false
     }; 
 });
-builder.Services.AddAuthorization(option=> {
-    option.AddPolicy("Admin", policy => policy.RequireClaim("Admin"));
-    option.AddPolicy("Write", policy => policy.RequireClaim("Write"));
-    option.AddPolicy("Reader", policy => policy.RequireClaim("Reader")); 
+builder.Services.AddAuthorization(options=> {
+    options.AddPolicy("RequireAdmin", policy => policy.RequireAssertion(context => context.User.HasClaim(c => c.Type == ClaimTypes.Name && c.Value == "Admin")));
+    options.AddPolicy("RequireWrite", policy => policy.RequireClaim("Write"));
+    options.AddPolicy("RequireReader", policy => policy.RequireClaim("Reader")); 
     }); 
 
 

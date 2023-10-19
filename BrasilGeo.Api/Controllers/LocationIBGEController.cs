@@ -19,7 +19,7 @@ namespace BrasilGeo.Api.Controllers
         }
 
         [HttpGet]
-        [Authorize]
+        [Authorize(Policy = "RequireReader")]
         public async Task<IActionResult> GetAllLocationsAsync([FromQuery] LocationIBGEReadQuery query,
             [FromServices] LocationIBGEQueryHandler handler)
         {
@@ -32,6 +32,7 @@ namespace BrasilGeo.Api.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = "RequireWrite")]
         public async Task<IActionResult> CreateLocation([FromBody] CreateLocationIBGECommand command, 
             [FromServices] CreateLocationIBGEHandler handler)
         {
@@ -44,6 +45,7 @@ namespace BrasilGeo.Api.Controllers
         }
 
         [HttpPut]
+        [Authorize(Policy = "RequireWrite")]
         public async Task<IActionResult> UpdateLocation([FromBody] UpdateLocationIBGECommand command, 
             [FromServices] UpdateLocationIBGEHandler handler)
         {
@@ -64,6 +66,7 @@ namespace BrasilGeo.Api.Controllers
         }
 
         [HttpDelete]
+        [Authorize(Policy ="RequireAdmin")]
         public async Task<IActionResult>  DeleteLocation([FromBody] DeleteLocationIBGECommand command,
             [FromServices] DeleteLocationIBGEHandler handler)
         {

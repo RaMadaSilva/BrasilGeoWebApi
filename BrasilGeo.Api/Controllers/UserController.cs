@@ -34,7 +34,7 @@ namespace BrasilGeo.Api.Controllers
             return Ok(result);
         }
         [HttpPut]
-        [Authorize(Policy ="Write")]
+        [Authorize(Policy = "RequireWrite")]
         public async Task<IActionResult> PutUserAsync([FromBody] UpdateuserCommand command,
             [FromServices] UpdateUserHandler handler)
         {
@@ -55,7 +55,8 @@ namespace BrasilGeo.Api.Controllers
            
         }
         [HttpDelete]
-        [Authorize(Policy ="Admin")]
+        //[Authorize(Policy = "RequireAdmin")]
+        [AllowAnonymous]
         public async Task<IActionResult> DeleteUserAsync([FromBody] DeleteUserCommand command,
             [FromServices] DeleteuserHandler handler)
         {

@@ -24,7 +24,9 @@ namespace BrasilGeo.Aplications.Handlers.LocationIBGEHandler
 
             var locationIBGE = new LocationIBGE(command.City, command.State);
 
-            var locationIBGEBd = await _uinteOfWork.LocationIBGERepository.GetLocationIBGEByCityNameAndStateName(locationIBGE.City, locationIBGE.State);
+            var locationIBGEBd = await _uinteOfWork
+                            .LocationIBGERepository
+                            .GetLocationIBGEByCityNameAndStateNameAsync(locationIBGE.City, locationIBGE.State);
 
             if (locationIBGE.Equals(locationIBGEBd))
                 return new CommandResult(false, "Ja existe uma localidade com esta cidade e estado", locationIBGEBd);

@@ -4,10 +4,9 @@ namespace BrasilGeo.Domain.Repositories
 {
     public interface ILocationIBGERepository : IBaseRepository<LocationIBGE>
     {
-        Task<LocationIBGE> GetLocationIBGEByCityNameAsync(string  cityName);
         Task<List<LocationIBGE>> GetLocationsIBGEByState(string state); 
-        Task<LocationIBGE> GetLocationIBGEByCityNameAndStateName(string cityName, string stateName);
-        Task<List<LocationIBGE>> GetLocationsByCityName(string cityName);
-        Task<LocationIBGE> GetLocationsIBGEById(long Id);
+        Task<LocationIBGE> GetLocationIBGEByCityNameAndStateNameAsync(string cityName, string stateName);
+        Task<List<LocationIBGE>> GetLocationsByCityNameAsync(string cityName);
+        Task<LocationIBGE> GetLocationIBGEByCityNameAsync(string cityName);
     }
 }

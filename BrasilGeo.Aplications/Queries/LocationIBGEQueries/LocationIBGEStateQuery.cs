@@ -2,7 +2,7 @@
 
 namespace BrasilGeo.Aplications.Queries.LocationIBGEQueries
 {
-    public sealed record LocationIBGEStateQuery(string state): IQuery
+    public sealed record LocationIBGEStateQuery(string State): IQuery
     {
     }
 }

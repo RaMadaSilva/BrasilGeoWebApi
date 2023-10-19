@@ -55,16 +55,6 @@ namespace BrasilGeo.Infra.Repositories
 
             return location;
         }
-
-        public async Task<LocationIBGE> GetLocationIBGEByStateNameAsync(string state)
-        {
-
-            var location = await _context.LocationIBGEs
-                .Where(loc => loc.State == state)
-                .FirstOrDefaultAsync();
-
-            return location;
-        }
     }
 
 }

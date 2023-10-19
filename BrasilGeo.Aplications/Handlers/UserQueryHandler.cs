@@ -7,7 +7,7 @@ using BrasilGeo.Domain.Repositories;
 
 namespace BrasilGeo.Aplications.Handlers
 {
-    public class UserQueryHandler : IQueryHandler<UserQuery, IEnumerable<UserDto>>
+    public class UserQueryHandler 
     {
         private readonly IUniteOfWork _uniteOfWork;
         private readonly IAdapter<IEnumerable<User>, IEnumerable<UserDto>> _adapter;

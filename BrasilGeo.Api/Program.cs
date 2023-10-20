@@ -1,4 +1,5 @@
 using BrasilGeo.Api.Extensions;
+using BrasilGeo.Api.Middleware;
 using BrasilGeo.Infra.Context;
 using BrasilGeo.Infra.IoC;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -44,6 +45,8 @@ var app = builder.Build();
 
 
 // Configure the HTTP request pipeline.
+app.UseMiddleware<ExceptionMiddleware>();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger(options =>

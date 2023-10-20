@@ -1,6 +1,9 @@
-﻿using BrasilGeo.Aplications.Commands.LocationIBGECommands;
+﻿using Azure.Core;
+using BrasilGeo.Aplications.Commands.LocationIBGECommands;
 using BrasilGeo.Aplications.Handlers.LocationIBGEHandler;
 using BrasilGeo.Aplications.Queries.LocationIBGEQueries;
+using BrasilGeo.Domain.Enums;
+using BrasilGeo.Domain.Errors;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -14,6 +17,8 @@ namespace BrasilGeo.Api.Controllers
 
         [HttpGet("code")]
         [Authorize]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetLocationsByCodeAsync([FromQuery] LocationIBGECodeQuery query,
             [FromServices] LocationIBGECodeQueryHandler handler)
         {
@@ -27,6 +32,8 @@ namespace BrasilGeo.Api.Controllers
 
         [HttpGet("State")]
         [Authorize]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetLocationByState([FromQuery] LocationIBGEStateQuery query,
             [FromServices] LocationIBGEStateQueryHandler handler)
         {
@@ -35,8 +42,11 @@ namespace BrasilGeo.Api.Controllers
                 return BadRequest("Não Existem Resultados para este estado"); 
             return Ok(result);
         }
+
         [HttpGet("City")]
         [Authorize]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetLocationByCityAsync([FromQuery] LocationIBGECityQuery query,
             [FromServices] LocationIBGECityQueryHandler handler)
         {
@@ -48,6 +58,8 @@ namespace BrasilGeo.Api.Controllers
 
         [HttpGet("parameters")]
         [Authorize]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetAllLocationsAsync([FromQuery] LocationIBGEParameterQuery query,
             [FromServices] LocationIBGEWithParameterQueryHandler handler)
         {
@@ -62,6 +74,8 @@ namespace BrasilGeo.Api.Controllers
 
         [HttpPost]
         [Authorize]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> CreateLocation([FromBody] CreateLocationIBGECommand command,
             [FromServices] CreateLocationIBGEHandler handler)
         {
@@ -75,6 +89,8 @@ namespace BrasilGeo.Api.Controllers
 
         [HttpPut]
         [Authorize]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> UpdateLocation([FromBody] UpdateLocationIBGECommand command,
             [FromServices] UpdateLocationIBGEHandler handler)
         {
@@ -96,6 +112,8 @@ namespace BrasilGeo.Api.Controllers
 
         [HttpDelete]
         [Authorize]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> DeleteLocation([FromBody] DeleteLocationIBGECommand command,
             [FromServices] DeleteLocationIBGEHandler handler)
         {

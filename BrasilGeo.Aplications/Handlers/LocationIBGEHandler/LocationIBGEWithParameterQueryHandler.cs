@@ -1,5 +1,4 @@
 ﻿using BrasilGeo.Aplications.Dtos;
-using BrasilGeo.Aplications.Queries;
 using BrasilGeo.Aplications.Queries.LocationIBGEQueries;
 using BrasilGeo.Domain.Adapter;
 using BrasilGeo.Domain.Entities.IBGE;
@@ -23,16 +22,25 @@ namespace BrasilGeo.Aplications.Handlers.LocationIBGEHandler
 
         public async Task<IEnumerable<LocationIBGEDto>> HandleAsync(LocationIBGEParameterQuery query)
         {
-            if (!Enum.TryParse(query.Sort, true, out ESortOptions sortOptions))
-                return null;
+            try
+            {
+                if (!Enum.TryParse(query.Sort, true, out ESortOptions sortOptions))
+                    return null;
 
-            var locationIBGESpecification = new LocationIBGESpecificationQuery(sortOptions, query);
+                var locationIBGESpecification = new LocationIBGESpecificationQuery(sortOptions, query);
 
-            var totalItems = await _uniteOfWork.LocationIBGERepository.CountAsync(locationIBGESpecification);
+                var totalItems = await _uniteOfWork.LocationIBGERepository.CountAsync(locationIBGESpecification);
 
-            var locationsIBGE = await _uniteOfWork.LocationIBGERepository.ListAsync(locationIBGESpecification);
+                var locationsIBGE = await _uniteOfWork.LocationIBGERepository.ListAsync(locationIBGESpecification);
 
-            return _adapter.Adapte(locationsIBGE); 
+                return _adapter.Adapte(locationsIBGE); 
+
+            }
+            catch (Exception ex) 
+            {
+                throw new Exception(ex.Message);
+
+            }
         }
     }
 }

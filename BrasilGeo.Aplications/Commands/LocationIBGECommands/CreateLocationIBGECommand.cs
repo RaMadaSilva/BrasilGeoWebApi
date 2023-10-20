@@ -14,8 +14,8 @@ namespace BrasilGeo.Aplications.Commands.LocationIBGECommands
         {
             AddNotifications(new Contract<CreateLocationIBGECommand>()
                 .Requires()
-                .IsGreaterThan(State, 2, "State", "Uf precisa ter até 2 caracteres!")
-                .IsLowerThan(State, 2, "State", "Uf precisa ter até 2 caracteres!")
+                .IsGreaterThan(State, 1, "State", "Uf precisa ter até 2 caracteres!")
+                .IsLowerThan(State, 3, "State", "Uf precisa ter até 2 caracteres!")
                 );
         }
     }

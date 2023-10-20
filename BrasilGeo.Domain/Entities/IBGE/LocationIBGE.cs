@@ -25,9 +25,16 @@ namespace BrasilGeo.Domain.Entities.IBGE
             City = city;
         }
 
-        public bool Equals(LocationIBGE? other)
+        public override int GetHashCode()
         {
-            return State == other?.State && City == other.City;
+            return HashCode.Combine(State, City);
+        }
+
+        public bool Equals(LocationIBGE other)
+        {
+            if (other == null) return false;
+
+            return State.Uf.Equals(other.State.Uf) && City == other.City;
         }
     }
 }

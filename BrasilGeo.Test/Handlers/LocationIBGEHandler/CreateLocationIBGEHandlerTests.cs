@@ -37,7 +37,7 @@ namespace BrasilGeo.Test.Handlers.LocationIBGEHandler
         public async Task HandleAsync_ShouldReturnError_WhenCommandIsInvalid()
         {
             // Arrange
-            var command = new CreateLocationIBGECommand(); // Assuming this makes it invalid
+            var command = new CreateLocationIBGECommand { City = "TestCity", State = "TSA" }; // Assuming this makes it invalid
 
             // Act
             var result = await _handler.HandleAsync(command);
@@ -51,9 +51,9 @@ namespace BrasilGeo.Test.Handlers.LocationIBGEHandler
         public async Task HandleAsync_ShouldReturnError_WhenLocationExists()
         {
             // Arrange
-            var command = new CreateLocationIBGECommand { City = "ExistingCity", State = "ES" }; // Assuming ES is valid
+            var command = new CreateLocationIBGECommand { State = "ES", City = "ExistingCity" }; // Assuming ES is valid
             _unitOfWorkMock.Setup(u => u.LocationIBGERepository.GetLocationIBGEByCityNameAndStateNameAsync(It.IsAny<string>(), It.IsAny<string>()))
-                           .ReturnsAsync(new LocationIBGE("ExistingCity", "ES"));
+                           .ReturnsAsync(new LocationIBGE("ES", "ExistingCity"));
 
             // Act
             var result = await _handler.HandleAsync(command);

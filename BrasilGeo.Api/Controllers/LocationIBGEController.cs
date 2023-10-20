@@ -81,10 +81,10 @@ namespace BrasilGeo.Api.Controllers
         {
             var result = await handler.HandleAsync(command);
 
-            if (!result.Sucess)
+            if (!result.Success)
                 return BadRequest(result);
 
-            return Created($"/{result.Sucess}", result);
+            return Created($"/{result.Success}", result);
         }
 
         [HttpPut]
@@ -98,7 +98,7 @@ namespace BrasilGeo.Api.Controllers
             {
                 var result = await handler.HandleAsync(command);
 
-                if (!result.Sucess)
+                if (!result.Success)
                     return BadRequest(result);
 
                 return Ok(result);
@@ -119,7 +119,7 @@ namespace BrasilGeo.Api.Controllers
         {
             var result = await handler.HandleAsync(command);
 
-            if (!result.Sucess)
+            if (!result.Success)
                 return BadRequest(result);
 
             return Ok(result);

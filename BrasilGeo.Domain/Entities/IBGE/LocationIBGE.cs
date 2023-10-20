@@ -1,5 +1,4 @@
-﻿using BrasilGeo.Domain.ValueObjects;
-using BrasilGeo.Domain.ValueObjects.LocationIBGE;
+﻿using BrasilGeo.Domain.ValueObjects.LocationIBGE;
 
 namespace BrasilGeo.Domain.Entities.IBGE
 {
@@ -27,7 +26,7 @@ namespace BrasilGeo.Domain.Entities.IBGE
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(State, City);
+            return HashCode.Combine(State.Uf, City);
         }
 
         public bool Equals(LocationIBGE other)

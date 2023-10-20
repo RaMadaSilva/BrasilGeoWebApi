@@ -11,6 +11,7 @@ namespace BrasilGeo.Aplications.Adapter
         {
             return source.Select(locationIBGE => new LocationIBGEDto
             {
+                Id = locationIBGE.Id,
                 City = locationIBGE.City,
                 State = locationIBGE.State,
             });

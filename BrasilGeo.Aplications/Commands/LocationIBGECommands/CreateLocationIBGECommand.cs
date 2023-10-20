@@ -6,9 +6,8 @@ namespace BrasilGeo.Aplications.Commands.LocationIBGECommands
 {
     public  class CreateLocationIBGECommand : Notifiable<Notification>, ICommand
     {
-        public long Id { get; set; }
-        public string State { get; set; }
-        public string City { get; set; }
+        public string State { get; set; } = string.Empty;
+        public string City { get; set; } = string.Empty; 
 
         public void Valid()
         {

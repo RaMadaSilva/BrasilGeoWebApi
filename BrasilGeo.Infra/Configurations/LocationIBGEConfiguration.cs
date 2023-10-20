@@ -13,13 +13,16 @@ namespace BrasilGeo.Infra.Configurations
             builder.HasKey(property => property.Id);
             builder.Property(property => property.Id)
                 .IsRequired()
+                .ValueGeneratedOnAdd()
                 .HasColumnName("Id")
                 .HasColumnType("BIGINT");
+
             builder.Property(property => property.City)
                 .IsRequired()
                 .HasColumnName("City")
                 .HasColumnType("NVARCHAR")
                 .HasMaxLength(200);
+
             builder.OwnsOne(x=>x.State)
                 .Property(property => property.Uf)
                 .IsRequired()

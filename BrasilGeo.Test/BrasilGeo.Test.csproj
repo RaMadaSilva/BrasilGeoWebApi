@@ -28,4 +28,10 @@
     <ProjectReference Include="..\BrasilGeo.Domain\BrasilGeo.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DomainTest\" />
+    <Folder Include="CommandsTest\" />
+    <Folder Include="handlerTest\" />
+  </ItemGroup>
+
 </Project>

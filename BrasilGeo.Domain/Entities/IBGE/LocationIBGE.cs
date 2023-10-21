@@ -14,8 +14,8 @@ namespace BrasilGeo.Domain.Entities.IBGE
             City = city;
         }
 
-        public State State { get; private set; }
-        public string City { get; private set; }
+        public State State { get;  set; }
+        public string City { get; set; }
 
         public void UpdateLocationIBGE(State state, string city)
         {

@@ -21,27 +21,30 @@ namespace BrasilGeo.Aplications.Handlers.UserHandler
 
         public async Task<CommandResult> HandleAsync(UpdateuserCommand command)
         {
-            //Validar o command
-            command.Valid();
+            try
+            {
+                command.Valid();
 
-            if (command.IsValid)
-                return new CommandResult(false, "não foi possivel actualizar o Usuario", command.Notifications);
+                if (command.IsValid)
+                    return new CommandResult(false, "não foi possivel actualizar o Usuario", command.Notifications);
 
-            //Caso o commando esteja valido localizar o Usuario
-            var userBb = await _uniteOfWork.UserRepository.GetByIdAsync(command.Id);
+                var userBb = await _uniteOfWork.UserRepository.GetByIdAsync(command.Id);
 
-            //Caso o usuario não exista
-            if (userBb is null)
-                return new CommandResult(false, $"Não existe um usario com Id = {command.Id}", string.Empty);
+                if (userBb is null)
+                    return new CommandResult(false, $"Não existe um usario com Id = {command.Id}", string.Empty);
 
-            //Caso exista
-            userBb.UpdateUser(command.Email, command.Password, command.Roles);
-            await _uniteOfWork.UserRepository.UpdateAsync(userBb);
+                userBb.UpdateUser(command.Email, command.Password, command.Roles);
+                await _uniteOfWork.UserRepository.UpdateAsync(userBb);
 
-            //Persiste no banco
-            await _uniteOfWork.CommitAsync();
+                await _uniteOfWork.CommitAsync();
 
-            return new CommandResult(true, "Usuario actualizado com sucesso", _adapter.Adapte(userBb)); 
+                return new CommandResult(true, "Usuario actualizado com sucesso", _adapter.Adapte(userBb)); 
+
+            }
+            catch (Exception ex)
+            {
+                return new CommandResult(false, $"Ocorreu um erro inesperado:\n{ex.Message}", command.Notifications);
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using BrasilGeo.Aplications.Dtos;
+﻿using BrasilGeo.Aplications.Commands;
+using BrasilGeo.Aplications.Dtos;
 using BrasilGeo.Aplications.Queries.LocationIBGEQueries;
 using BrasilGeo.Domain.Adapter;
 using BrasilGeo.Domain.Entities.IBGE;
@@ -22,8 +23,16 @@ namespace BrasilGeo.Aplications.Handlers.LocationIBGEHandler
 
         public async Task<IEnumerable<LocationIBGEDto>> HandleAsync(LocationIBGECityQuery query)
         {
-            var result = await _uniteOfWork.LocationIBGERepository.GetLocationsByCityNameAsync(query.City);
-            return _adapter.Adapte(result); 
+            try 
+            {
+                var result = await _uniteOfWork.LocationIBGERepository.GetLocationsByCityNameAsync(query.City);
+                return _adapter.Adapte(result); 
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

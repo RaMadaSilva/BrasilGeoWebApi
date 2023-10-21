@@ -16,21 +16,29 @@ namespace BrasilGeo.Aplications.Handlers.LocationIBGEHandler
 
         public async Task<CommandResult> HandleAsync(DeleteLocationIBGECommand command)
         {
-            command.Valid();
+            try 
+            {
+                command.Valid();
 
-            if (!command.IsValid)
-                return new CommandResult(false, "Não é possivel remover a localidade", command.Notifications);
+                if (!command.IsValid)
+                    return new CommandResult(false, "Não é possivel remover a localidade", command.Notifications);
 
-            var locationIBGEBd = await _uniteOfWork.LocationIBGERepository.GetByIdAsync(command.Id);
+                var locationIBGEBd = await _uniteOfWork.LocationIBGERepository.GetByIdAsync(command.Id);
 
-            if (locationIBGEBd is null)
-                return new CommandResult(false, $"Não existe uma localidade com Id = {command.Id}", string.Empty);
+                if (locationIBGEBd is null)
+                    return new CommandResult(false, $"Não existe uma localidade com Id = {command.Id}", string.Empty);
 
-            await _uniteOfWork.LocationIBGERepository.DeleteAsync(locationIBGEBd);
+                await _uniteOfWork.LocationIBGERepository.DeleteAsync(locationIBGEBd);
 
-            await _uniteOfWork.CommitAsync();
+                await _uniteOfWork.CommitAsync();
 
-            return new CommandResult(true, "localidade Removida com sucesso", locationIBGEBd);
+                return new CommandResult(true, "localidade Removida com sucesso", locationIBGEBd);
+            }
+            catch (Exception ex)
+            {
+                return new CommandResult(false, $"Ocorreu um erro inesperado:\n{ex.Message}", command.Notifications);
+
+            }
         }
     }
 }

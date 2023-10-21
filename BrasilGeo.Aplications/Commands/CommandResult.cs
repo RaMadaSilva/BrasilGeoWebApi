@@ -6,13 +6,13 @@ namespace BrasilGeo.Aplications.Commands
     {
         public CommandResult(bool sucess, string mensage, object data)
         {
-            Sucess = sucess;
-            Mensage = mensage;
+            Success = sucess;
+            Message = mensage;
             Data = data;
         }
 
-        public bool Sucess { get ; set ; }
-        public string Mensage { get ; set ; }
+        public bool Success { get ; set ; }
+        public string Message { get ; set ; }
         public object Data { get; set ; }
     }
 }

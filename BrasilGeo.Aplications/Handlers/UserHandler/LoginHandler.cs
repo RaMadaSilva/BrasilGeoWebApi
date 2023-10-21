@@ -29,33 +29,38 @@ namespace BrasilGeo.Aplications.Handlers.UserHandler
 
         public async Task<CommandResult> HandleAsync(LoginCommand command)
         {
-            //Validar o comando
-            command.Valid();
+            try
+            {
+                command.Valid();
 
-            if (!command.IsValid)
-                return new CommandResult(false, "user ou senha invalida", command.Notifications);
+                if (!command.IsValid)
+                    return new CommandResult(false, "user ou senha invalida", command.Notifications);
 
-            //caso o comando esteja correcto tenho que ir a base de dados pegar o usuario. 
+                var userBd = await _uniteOfWork.UserRepository.GetUserByEmailWithRoleAsync(command.Email);
 
-            var userBd = await _uniteOfWork.UserRepository.GetUserByEmailWithRoleAsync(command.Email);
+                var loginDto = _adapter.Adapte(command);
+                loginDto.Password = "**********"; 
 
-            var loginDto = _adapter.Adapte(command);
-            loginDto.Password = "**********"; //mascarar a senha
+                if (userBd is null)
+                    return new CommandResult(false, "user ou senha invalida", loginDto);
 
-            if (userBd is null)
-                return new CommandResult(false, "user ou senha invalida", loginDto);
+                Password senha = command.Password;
 
-            //se  Existir o usuario tenho que confirma a senha. 
-            Password senha = command.Password;
+                var result = _account.ValidationPassword(senha, userBd.PasswordHash);
 
-            var result = _account.ValidationPassword(senha, userBd.PasswordHash);
+                if (!result)
+                    return new CommandResult(false, "User ou senha invalida", loginDto);
 
-            if (!result)
-                return new CommandResult(false, "User ou senha invalida", loginDto);
+                var token = _token.GenerateToken(userBd);
 
-            var token = _token.GenerateToken(userBd);
+                return new CommandResult(true, "Autenticação bem sucedida", token); 
 
-            return new CommandResult(true, "Autenticação bem sucedida", token); 
+            }
+            catch (Exception ex)
+            {
+                return new CommandResult(false, $"Ocorreu um erro inesperado:\n{ex.Message}", command.Notifications);
+            }
+
         }
     }
 }

@@ -16,22 +16,29 @@ namespace BrasilGeo.Aplications.Handlers.LocationIBGEHandler
 
         public async Task<CommandResult> HandleAsync(UpdateLocationIBGECommand command)
         {
-            command.Valid();
+            try 
+            {
+                command.Valid();
+                if (command.IsValid)
+                    return new CommandResult(false, "não foi possivel atualizar a Localidade", command.Notifications);
 
-            if (command.IsValid)
-                return new CommandResult(false, "não foi possivel atualizar a Localidade", command.Notifications);
+                var locationIBGEBb = await _uniteOfWork.LocationIBGERepository.GetByIdAsync(command.Id);
 
-            var locationIBGEBb = await _uniteOfWork.LocationIBGERepository.GetByIdAsync(command.Id);
+                if (locationIBGEBb is null)
+                    return new CommandResult(false, $"Não existe uma localidade com Id = {command.Id}", string.Empty);
 
-            if (locationIBGEBb is null)
-                return new CommandResult(false, $"Não existe uma localidade com Id = {command.Id}", string.Empty);
+                locationIBGEBb.UpdateLocationIBGE(command.State, command.City);
+                await _uniteOfWork.LocationIBGERepository.UpdateAsync(locationIBGEBb);
 
-            locationIBGEBb.UpdateLocationIBGE(command.State, command.City);
-            await _uniteOfWork.LocationIBGERepository.UpdateAsync(locationIBGEBb);
+                await _uniteOfWork.CommitAsync();
 
-            await _uniteOfWork.CommitAsync();
+                return new CommandResult(true, "Localidade atualizada com sucesso", locationIBGEBb);
+            }
+            catch(Exception ex) 
+            {
+                return new CommandResult(false, $"Ocorreu um erro inesperado:\n{ex.Message}", command.Notifications);
 
-            return new CommandResult(true, "Localidade atualizada com sucesso", locationIBGEBb);
+            }
         }
     }
 }

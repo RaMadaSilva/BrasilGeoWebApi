@@ -16,7 +16,7 @@ namespace BrasilGeo.Api.Controllers
         {
             var result = await handler.HandleAsync(command);
 
-            if(!result.Sucess)
+            if(!result.Success)
                 return BadRequest(result);
 
             return Ok(result);

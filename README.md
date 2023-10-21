@@ -16,6 +16,29 @@ A BrazilGeoAPI é uma API que fornece informações geográficas sobre cidades e
 
 - **Importação de Dados:** É possível importar dados geográficos a partir de um arquivo Excel.
 
+## 💫   Tecnologias Utilizadas
+
+- **.NET 7:** Versão do Framework .NET para desenvolvimento de aplicações.
+
+- **Asp.Net Core 7:** Framework para desenvolvimento de Apis e aplicações web da Microsoft.
+
+- **Entity Framework core:** tecnologia de ORM para o relacionamenteo entre objectos e entidades do banco de dados, usamos tambem a abordagem Code First para gerar as tabelas apartir das classes de entidaide.
+
+- **SQL Server:** Sistema de Gestão de Base de Dados SGBD da Microsoft escolhido para o respectivo projecto.
+
+- **FLUNT:** Padráo de Notificação desenvolvido pela Balta.io.
+
+- **CQRS:** Padrão arquitectural com o proposito de separar as responsabilidade entre comandos e consultas (Command Query Responsability Segregation).
+
+-  **Adapter:** O padrão Adapter atua como uma ponte entre duas interfaces incompatíveis, para transformar uma entidade em um Dto usamos o padrão adapter.
+  
+-  **Clean Architecture:** Arquitetura Limpa permite que as mudanças tenham impacto isolado e permite que o sistema seja facilmente estendido e mantido. 
+
+
+     ![image](https://github.com/RaMadaSilva/BrasilGeoWebApi/assets/91338367/6931f1b7-5d8e-425d-8a07-cc52ba5a00e3)
+
+
+
 ## 📦 Como Usar
 
 1. Clone este repositório.

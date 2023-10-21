@@ -34,7 +34,6 @@ namespace BrasilGeo.Aplications.Handlers.LocationIBGEHandler
             {
                 throw new Exception(ex.Message); 
             }
-
         }
     }
 }

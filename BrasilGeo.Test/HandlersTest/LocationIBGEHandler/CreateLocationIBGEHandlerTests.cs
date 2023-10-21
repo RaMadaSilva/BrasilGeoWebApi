@@ -79,5 +79,4 @@ namespace BrasilGeo.Test.Handlers.LocationIBGEHandler
             Assert.StartsWith("Ocorreu um erro inesperado:", result.Message);
         }
     }
-
 }

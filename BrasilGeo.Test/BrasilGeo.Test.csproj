@@ -30,9 +30,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DomainTest\" />
     <Folder Include="CommandsTest\" />
-    <Folder Include="handlerTest\" />
+    <Folder Include="DomainTest\EntitiesTest\" />
   </ItemGroup>
 
 </Project>

@@ -11,7 +11,7 @@
 
             Uf = uf.Trim().ToUpper();
 
-            if (Uf.Length > 2 && Uf.Length < 2)
+            if (Uf.Length > 2 || Uf.Length < 2)
                 throw new Exception("UF invalido");
         }
 

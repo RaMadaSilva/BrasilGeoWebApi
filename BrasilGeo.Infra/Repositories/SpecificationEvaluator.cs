@@ -32,9 +32,9 @@ namespace BrasilGeo.Infra.Repositories
                     .Take(specification.Take);
             }
 
-            query = specification.Includes.Aggregate
-                (query, (current, include)
-                    => current.Include(include));
+            //query = specification.Includes.Aggregate
+            //    (query, (current, include)
+            //        => current.Include(include));
 
             return query;
         }

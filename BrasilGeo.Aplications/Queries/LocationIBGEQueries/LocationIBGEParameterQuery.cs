@@ -10,11 +10,10 @@
             set { _pageSize = (value > MaxPageSize) ? MaxPageSize : value; }
         }
 
-        public string Sort { get; set; } = "StateAsc";
-        private string _search;
-        public string Search {
-            get { return _search; }
-            set { _search = value.ToLower(); }
-        }
+        public long? Id { get; set; }
+        public string? State { get; set; }
+        public string? City { get; set; }
+
+        public string Sort { get; set; } = "CidadeDesc";
     }
 }

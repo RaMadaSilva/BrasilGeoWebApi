@@ -10,10 +10,6 @@
             set { _pageSize = (value > MaxPageSize) ? MaxPageSize : value; }
         }
 
-        public long Id { get; set; }
-        public string State { get; set; } = string.Empty;
-        public string City { get; set; } = string.Empty;
-
         public string Sort { get; set; } = "StateAsc";
         private string _search;
         public string Search {

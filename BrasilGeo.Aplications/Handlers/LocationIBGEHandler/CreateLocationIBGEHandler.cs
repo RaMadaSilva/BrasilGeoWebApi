@@ -22,7 +22,7 @@ namespace BrasilGeo.Aplications.Handlers.LocationIBGEHandler
             if (!command.IsValid)
                 return new CommandResult(false, "Não foi possivel o Location", command.Notifications);
 
-            var locationIBGE = new LocationIBGE(command.City, command.State);
+            var locationIBGE = new LocationIBGE(command.State, command.City);
 
             var locationIBGEBd = await _uinteOfWork
                             .LocationIBGERepository

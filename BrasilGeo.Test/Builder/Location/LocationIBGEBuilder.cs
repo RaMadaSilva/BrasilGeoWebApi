@@ -1,39 +1,37 @@
 ﻿using BrasilGeo.Domain.Entities.IBGE;
-using BrasilGeo.Domain.ValueObjects.LocationIBGE;
+
 
 namespace BrasilGeo.Test.Builder.Location
 {
     public class LocationIBGEBuilder
     {
-        private readonly LocationIBGE _instance;
+        private long _id = 1; 
+        private string _state = "EX"; 
+        private string _city = "DefaultCity";
 
-        public LocationIBGEBuilder()
+        public LocationIBGEBuilder WithId(long id)
         {
-            _instance = new LocationIBGE("EX", "exampleCity");
-        }
-
-
-        public LocationIBGEBuilder WithId(long Id)
-        {
-            _instance.Id = Id;
+            _id = id;
             return this;
         }
         
-        public LocationIBGEBuilder WithState(State state)
+        public LocationIBGEBuilder WithState(string state)
         {
-            _instance.State.Uf = state.Uf;
+            _state = state;
             return this;
         }
 
         public LocationIBGEBuilder WithCity(string city)
         {
-            _instance.City = city;
+            _city = city;
             return this;
         }
 
         public LocationIBGE Build()
         {
-            return _instance;
+            var location = new LocationIBGE(_state, _city);
+            location.SetIdForTesting(_id);
+            return location;
         }
 
     }

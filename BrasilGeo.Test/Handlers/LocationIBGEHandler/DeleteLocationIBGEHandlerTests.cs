@@ -22,7 +22,8 @@ namespace BrasilGeo.Test.Handlers.LocationIBGEHandler
         public async Task HandleAsync_ShouldDeleteLocationSuccessfully()
         {
             // Arrange
-            var command = new DeleteLocationIBGECommand { Id = 1 };
+            var command = new DeleteLocationIBGECommand();
+            command.Id = 1;
             var fakeLocation = new LocationIBGEBuilder().WithId(1).WithCity("Santana").WithState("AP").Build();
             
             _unitOfWorkMock.Setup(u => u.LocationIBGERepository.GetByIdAsync(command.Id))

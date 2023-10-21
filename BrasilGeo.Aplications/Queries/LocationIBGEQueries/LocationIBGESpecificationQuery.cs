@@ -7,23 +7,22 @@ namespace BrasilGeo.Aplications.Queries.LocationIBGEQueries
     public class LocationIBGESpecificationQuery : BaseSpecification<LocationIBGE>
     {
         public LocationIBGESpecificationQuery(ESortOptions sortOptions, LocationIBGEParameterQuery query)
-            : base(locationIBGE =>
-            string.IsNullOrEmpty(query.Search) || locationIBGE.City.Contains(query.Search)
-            || locationIBGE.State.Uf.Contains(query.Search))
+            : base(locationIBGE => (!string.IsNullOrEmpty(query.City) || locationIBGE.City == query.City) &&
+            (!string.IsNullOrEmpty(query.State) ||locationIBGE.State.Uf == query.State) && (query.Id != 0) || locationIBGE.Id == query.Id)
         {
             ApplyPaging(query.PageSize * (query.PageIndex - 1),
                 query.PageSize);
 
             switch (sortOptions)
             {
-                case ESortOptions.StateAsc:
-                    AddOrderBy(location => location.State);
+                case ESortOptions.CidadeAsc:
+                    AddOrderBy(location => location.City);
                     break;
-                case ESortOptions.StateDesc:
-                    AddOrderByDescending(location => location.State);
+                case ESortOptions.CidadeDesc:
+                    AddOrderByDescending(location => location.City);
                     break;
                 default:
-                    AddOrderBy(location => location.State!);
+                    AddOrderBy(location => location.City!);
                     break;
             }
         }

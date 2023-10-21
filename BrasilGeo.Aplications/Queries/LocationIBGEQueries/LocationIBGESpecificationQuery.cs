@@ -11,6 +11,21 @@ namespace BrasilGeo.Aplications.Queries.LocationIBGEQueries
             string.IsNullOrEmpty(query.Search) || locationIBGE.City.Contains(query.Search)
             || locationIBGE.State.Uf.Contains(query.Search) || locationIBGE.Id.ToString().Contains(query.Search))
         {
+            ApplyPaging(query.PageSize * (query.PageIndex - 1),
+                query.PageSize);
+
+            switch (sortOptions)
+            {
+                case ESortOptions.StateAsc:
+                    AddOrderBy(location => location.State);
+                    break;
+                case ESortOptions.StateDesc:
+                    AddOrderByDescending(location => location.State);
+                    break;
+                default:
+                    AddOrderBy(location => location.State!);
+                    break;
+            }
         }
     }
 

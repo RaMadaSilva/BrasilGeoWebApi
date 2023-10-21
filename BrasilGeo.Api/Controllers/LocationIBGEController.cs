@@ -64,7 +64,7 @@ namespace BrasilGeo.Api.Controllers
         {
             var result = await handler.HandleAsync(query);
 
-            if (result.IsNullOrEmpty())
+            if (result.Data.IsNullOrEmpty())
                 return BadRequest(result);
 
             return Ok(result);

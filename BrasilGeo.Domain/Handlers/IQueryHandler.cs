@@ -1,9 +1,10 @@
-﻿using BrasilGeo.Domain.Queries;
+﻿using BrasilGeo.Domain.Helpers;
 
 namespace BrasilGeo.Domain.Handlers
 {
     public interface IQueryHandler<TQuery, TDto> 
     {
-        Task<TDto> HandleAsync(TQuery query);
+        Task<TDto> HandleAsync(TQuery query); 
+
     }
 }

@@ -4,11 +4,12 @@ using BrasilGeo.Domain.Adapter;
 using BrasilGeo.Domain.Entities.IBGE;
 using BrasilGeo.Domain.Enums;
 using BrasilGeo.Domain.Handlers;
+using BrasilGeo.Domain.Helpers;
 using BrasilGeo.Domain.Repositories;
 
 namespace BrasilGeo.Aplications.Handlers.LocationIBGEHandler
 {
-    public class LocationIBGEWithParameterQueryHandler  : IQueryHandler<LocationIBGEParameterQuery, IEnumerable<LocationIBGEDto>>
+    public class LocationIBGEWithParameterQueryHandler  : IQueryHandler<LocationIBGEParameterQuery, Pagination<LocationIBGEDto>>
     {
         private readonly IUniteOfWork _uniteOfWork;
         private readonly IAdapter<IEnumerable<LocationIBGE>, IEnumerable<LocationIBGEDto>> _adapter;
@@ -20,7 +21,7 @@ namespace BrasilGeo.Aplications.Handlers.LocationIBGEHandler
             _adapter = adapter;
         }
 
-        public async Task<IEnumerable<LocationIBGEDto>> HandleAsync(LocationIBGEParameterQuery query)
+        public async Task<Pagination<LocationIBGEDto>> HandleAsync(LocationIBGEParameterQuery query)
         {
             try
             {
@@ -33,7 +34,16 @@ namespace BrasilGeo.Aplications.Handlers.LocationIBGEHandler
 
                 var locationsIBGE = await _uniteOfWork.LocationIBGERepository.ListAsync(locationIBGESpecification);
 
-                return _adapter.Adapte(locationsIBGE); 
+                var locations = _adapter.Adapte(locationsIBGE);
+
+                return new Pagination<LocationIBGEDto>
+                {
+                    PageIndex = query.PageIndex,
+                    PageSize = query.PageSize,
+                    Count = totalItems,
+                    Data = locations
+                    
+                };
 
             }
             catch (Exception ex) 

@@ -1,8 +1,9 @@
 ﻿using Microsoft.OpenApi.Models;
+using System.Reflection;
 
 namespace BrasilGeo.Api.Extensions
 {
-    public  static class AddOpApiServiceExtensions
+    public static class AddOpApiServiceExtensions
     {
         public static IServiceCollection AddSwaggerExtensions(this IServiceCollection services)
         {
@@ -14,6 +15,10 @@ namespace BrasilGeo.Api.Extensions
                     Title = "BrasilGeo API",
                     Description = "An ASP.NET Core Web API for manage Location from Brazil IBGE"
                 });
+
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                options.IncludeXmlComments(xmlPath);
 
                 options.AddSecurityDefinition(name: "Bearer", securityScheme: new OpenApiSecurityScheme
                 {
@@ -44,5 +49,5 @@ namespace BrasilGeo.Api.Extensions
             return services;
         }
     }
-       
+
 }

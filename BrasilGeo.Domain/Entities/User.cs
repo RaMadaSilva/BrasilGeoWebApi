@@ -27,9 +27,16 @@ namespace BrasilGeo.Domain.Entities
         }
 
         public void AddRole(Role role) => _roles.Add(role);
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Email.Adress, PasswordHash.Pass);
+        }
         public bool Equals(User? other)
         {
-            return Email.Adress == other?.Email.Adress;
+            if(other is null) 
+                return false;
+            return Email.Adress == other.Email.Adress;
         }
     }
 }

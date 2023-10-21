@@ -1,8 +1,6 @@
-﻿using Azure.Core;
-using BrasilGeo.Aplications.Commands.LocationIBGECommands;
+﻿using BrasilGeo.Aplications.Commands.LocationIBGECommands;
 using BrasilGeo.Aplications.Handlers.LocationIBGEHandler;
 using BrasilGeo.Aplications.Queries.LocationIBGEQueries;
-using BrasilGeo.Domain.Enums;
 using BrasilGeo.Domain.Errors;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

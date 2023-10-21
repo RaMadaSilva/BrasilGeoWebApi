@@ -23,12 +23,18 @@ namespace BrasilGeo.Aplications.Handlers.LocationIBGEHandler
 
         public async Task<LocationIBGEDto> HandleAsync(LocationIBGECodeQuery query)
         {
-            try 
+            try
             {
+                var result = await _uniteOfWork.LocationIBGERepository.GetByIdAsync(query.Id);
+                if (result is null)
+                    return null; 
 
-               var result =  await _uniteOfWork.LocationIBGERepository.GetByIdAsync(query.Id); 
+                return _adapter.Adapte(result);
+            }catch(Exception ex)
+            {
+                throw new Exception(ex.Message); 
+            }
 
-            return _adapter.Adapte(result);
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using BrasilGeo.Aplications.Commands;
-using BrasilGeo.Aplications.Dtos;
+﻿using BrasilGeo.Aplications.Dtos;
 using BrasilGeo.Aplications.Queries.LocationIBGEQueries;
 using BrasilGeo.Domain.Adapter;
 using BrasilGeo.Domain.Entities.IBGE;

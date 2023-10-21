@@ -9,7 +9,7 @@ namespace BrasilGeo.Aplications.Queries.LocationIBGEQueries
         public LocationIBGECountSpecificationQuery(ESortOptions sortOptions, LocationIBGEParameterQuery query)
             : base(locationIBGE =>
             string.IsNullOrEmpty(query.Search) || locationIBGE.City.Contains(query.Search)
-            || locationIBGE.State.Uf.Contains(query.Search) || locationIBGE.Id.ToString().Contains(query.Search))
+            || locationIBGE.State.Uf.Contains(query.Search) || locationIBGE.Id.Equals(long.Parse(query.Search)))
         {
            
             

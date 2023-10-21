@@ -29,8 +29,9 @@ namespace BrasilGeo.Aplications.Handlers.LocationIBGEHandler
                     return null;
 
                 var locationIBGESpecification = new LocationIBGESpecificationQuery(sortOptions, query);
+                var locationIBGECountSpecification = new LocationIBGECountSpecificationQuery(sortOptions, query);
 
-                var totalItems = await _uniteOfWork.LocationIBGERepository.CountAsync(locationIBGESpecification);
+                var totalItems = await _uniteOfWork.LocationIBGERepository.CountAsync(locationIBGECountSpecification);
 
                 var locationsIBGE = await _uniteOfWork.LocationIBGERepository.ListAsync(locationIBGESpecification);
 

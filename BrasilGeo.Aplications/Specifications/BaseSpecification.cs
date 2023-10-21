@@ -30,11 +30,6 @@ namespace BrasilGeo.Aplications.Specifications
 
         public bool IsPagingEnabled { get; private set; } = false;
 
-        protected void AddInclude(Expression<Func<T, object>> includeExpression)
-        {
-            Includes.Add(includeExpression);
-        }
-
         protected void AddOrderBy(Expression<Func<T, object>> orderByExpression)
         {
             OrderBy = orderByExpression;

@@ -16,6 +16,8 @@ namespace BrasilGeo.Api.Controllers
         [HttpGet("code")]
         [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetLocationsByCodeAsync([FromQuery] LocationIBGECodeQuery query,
             [FromServices] LocationIBGECodeQueryHandler handler)
@@ -31,6 +33,8 @@ namespace BrasilGeo.Api.Controllers
         [HttpGet("State")]
         [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetLocationByState([FromQuery] LocationIBGEStateQuery query,
             [FromServices] LocationIBGEStateQueryHandler handler)
@@ -45,6 +49,8 @@ namespace BrasilGeo.Api.Controllers
         [HttpGet("City")]
         [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetLocationByCityAsync([FromQuery] LocationIBGECityQuery query,
             [FromServices] LocationIBGECityQueryHandler handler)

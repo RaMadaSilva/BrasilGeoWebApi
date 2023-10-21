@@ -12,6 +12,7 @@ namespace BrasilGeo.Aplications.Commands.LocationIBGECommands
         public void Valid()
         {
             AddNotifications(new Contract<DeleteUserCommand>()
+                .IsLowerThan(0, Id, "Id Invalido")
                 .Requires());
         }
     }

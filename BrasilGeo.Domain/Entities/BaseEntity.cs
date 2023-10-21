@@ -7,5 +7,11 @@
         }
 
         public long Id { get; private set; }
+
+        public void SetIdForTesting(long id)
+        {
+            this.Id = id;
+        }
+
     }
 }

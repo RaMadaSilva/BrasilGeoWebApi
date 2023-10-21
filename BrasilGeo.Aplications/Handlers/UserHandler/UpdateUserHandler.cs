@@ -25,7 +25,7 @@ namespace BrasilGeo.Aplications.Handlers.UserHandler
             {
                 command.Valid();
 
-                if (command.IsValid)
+                if (!command.IsValid)
                     return new CommandResult(false, "não foi possivel actualizar o Usuario", command.Notifications);
 
                 var userBb = await _uniteOfWork.UserRepository.GetByIdAsync(command.Id);

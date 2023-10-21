@@ -29,7 +29,7 @@ namespace BrasilGeo.Domain.Entities
         public void AddRole(Role role) => _roles.Add(role);
         public bool Equals(User? other)
         {
-            return Email == other?.Email;
+            return Email.Adress == other?.Email.Adress;
         }
     }
 }

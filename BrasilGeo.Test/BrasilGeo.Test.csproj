@@ -30,4 +30,9 @@
     <ProjectReference Include="..\BrasilGeo.Domain\BrasilGeo.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="CommandsTest\" />
+    <Folder Include="DomainTest\EntitiesTest\" />
+  </ItemGroup>
+
 </Project>

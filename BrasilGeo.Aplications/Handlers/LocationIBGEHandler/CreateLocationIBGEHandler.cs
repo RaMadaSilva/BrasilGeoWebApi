@@ -24,7 +24,7 @@ namespace BrasilGeo.Aplications.Handlers.LocationIBGEHandler
                 if (!command.IsValid)
                     return new CommandResult(false, "Não foi possivel salvar uma Localizacao", command.Notifications);
 
-                var locationIBGE = new LocationIBGE(command.State, command.City);
+            var locationIBGE = new LocationIBGE(command.State, command.City);
 
                 var locationIBGEBd = await _uinteOfWork
                                 .LocationIBGERepository

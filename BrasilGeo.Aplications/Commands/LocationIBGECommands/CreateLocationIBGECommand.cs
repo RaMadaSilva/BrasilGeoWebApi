@@ -6,16 +6,15 @@ namespace BrasilGeo.Aplications.Commands.LocationIBGECommands
 {
     public  class CreateLocationIBGECommand : Notifiable<Notification>, ICommand
     {
-        public long Id { get; set; }
-        public string State { get; set; }
-        public string City { get; set; }
+        public string State { get; set; } = string.Empty;
+        public string City { get; set; } = string.Empty; 
 
         public void Valid()
         {
             AddNotifications(new Contract<CreateLocationIBGECommand>()
                 .Requires()
-                .IsGreaterThan(State, 1, "State", "Uf precisa ter até 2 caracteres!")
-                .IsLowerThan(State, 3, "State", "Uf precisa ter até 2 caracteres!")
+                .IsGreaterThan(State, 1, "State", "Uf precisa maior que 1!")
+                .IsLowerThan(State, 3, "State", "Uf precisa ter menor que 3!")
                 );
         }
     }

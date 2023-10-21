@@ -33,7 +33,9 @@ builder.Services.AddAuthentication(x =>
     }; 
 });
 builder.Services.AddAuthorization(options=> {
-    options.AddPolicy("RequireAdmin", policy => policy.RequireAssertion(context => context.User.HasClaim(c => c.Type == ClaimTypes.Name && c.Value == "Admin")));
+    options.AddPolicy("RequireAdmin", policy => policy.RequireAssertion(context => context
+            .User
+            .HasClaim(c => c.Type == ClaimTypes.Name && c.Value == "Admin")));
     options.AddPolicy("RequireWrite", policy => policy.RequireClaim("Write"));
     options.AddPolicy("RequireReader", policy => policy.RequireClaim("Reader")); 
     }); 

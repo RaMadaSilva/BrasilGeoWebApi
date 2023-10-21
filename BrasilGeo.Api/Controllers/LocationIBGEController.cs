@@ -1,8 +1,6 @@
-﻿using Azure.Core;
-using BrasilGeo.Aplications.Commands.LocationIBGECommands;
+﻿using BrasilGeo.Aplications.Commands.LocationIBGECommands;
 using BrasilGeo.Aplications.Handlers.LocationIBGEHandler;
 using BrasilGeo.Aplications.Queries.LocationIBGEQueries;
-using BrasilGeo.Domain.Enums;
 using BrasilGeo.Domain.Errors;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -37,7 +35,8 @@ namespace BrasilGeo.Api.Controllers
         public async Task<IActionResult> GetLocationByState([FromQuery] LocationIBGEStateQuery query,
             [FromServices] LocationIBGEStateQueryHandler handler)
         {
-            var result = handler.HandleAsync(query);
+            var result = await handler.HandleAsync(query);
+
             if (result is null)
                 return BadRequest("Não Existem Resultados para este estado"); 
             return Ok(result);

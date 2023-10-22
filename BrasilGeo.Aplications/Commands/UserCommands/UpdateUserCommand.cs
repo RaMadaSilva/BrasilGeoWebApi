@@ -10,7 +10,6 @@ namespace BrasilGeo.Aplications.Commands.UserCommands
         public long Id { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public List<string> Roles { get; set; }
         public void Valid()
         {
             AddNotifications(new Contract<CreateUserCommand>()

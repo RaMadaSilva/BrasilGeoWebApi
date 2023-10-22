@@ -18,12 +18,10 @@ namespace BrasilGeo.Domain.Entities
         public Password PasswordHash { get; private set; }
         public ICollection<Role> Roles => _roles;
 
-        public void UpdateUser(Email email, Password password, List<string> roles)
+        public void UpdateUser(Email email, Password password)
         {
             Email = email; 
-            PasswordHash = password; 
-            foreach (var role in roles)
-                AddRole(role);     
+            PasswordHash = password;  
         }
 
         public void AddRole(Role role) => _roles.Add(role);

@@ -33,7 +33,7 @@ namespace BrasilGeo.Aplications.Handlers.UserHandler
                 if (userBb is null)
                     return new CommandResult(false, $"Não existe um usario com Id = {command.Id}", string.Empty);
 
-                userBb.UpdateUser(command.Email, command.Password, command.Roles);
+                userBb.UpdateUser(command.Email, command.Password);
                 await _uniteOfWork.UserRepository.UpdateAsync(userBb);
 
                 await _uniteOfWork.CommitAsync();

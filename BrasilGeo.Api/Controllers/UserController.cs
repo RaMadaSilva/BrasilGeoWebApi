@@ -51,6 +51,7 @@ namespace BrasilGeo.Api.Controllers
         ///             "Reader"
         ///         ]
         ///     }
+        ///     NOTA: Para Criação de um Usuario Não é necessario estar autenticado!
         /// </remarks>
         [HttpPost]
         [AllowAnonymous]
@@ -81,11 +82,6 @@ namespace BrasilGeo.Api.Controllers
         ///        "id" : 1,
         ///        "email": "email@teste.com",
         ///        "password": "SenhaMaiorQue8Caracteres",
-        ///        "roles": [
-        ///             "Admin",
-        ///             "Write",
-        ///             "Reader"
-        ///         ]
         ///     }
         /// </remarks>
         [HttpPut]

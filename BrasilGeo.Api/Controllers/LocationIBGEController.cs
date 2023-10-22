@@ -15,7 +15,7 @@ namespace BrasilGeo.Api.Controllers
     public class LocationIBGEController : ControllerBase
     {
         /// <summary>
-        /// Retorna a localização por ID
+        /// Retorna a localidade por ID
         /// </summary>
         /// <param name="query">Requisição passando o Id</param>
         /// <returns>Mensagem de sucesso, o Id, a Cidade e o Estado</returns>
@@ -45,7 +45,7 @@ namespace BrasilGeo.Api.Controllers
         }
 
         /// <summary>
-        /// Retorna a localização por Estado
+        /// Retorna a localidade por Estado
         /// </summary>
         /// <param name="query">Requisição passando o Estado</param>
         /// <returns>Mensagem de sucesso, uma lista com o Id, a Cidade e o Estado</returns>
@@ -74,7 +74,7 @@ namespace BrasilGeo.Api.Controllers
         }
 
         /// <summary>
-        /// Retorna a localização por Cidade
+        /// Retorna a localidade por Cidade
         /// </summary>
         /// <param name="query">Requisição passando a Cidade</param>
         /// <returns>Mensagem de sucesso, uma lista com o Id, a Cidade e o Estado</returns>
@@ -137,7 +137,7 @@ namespace BrasilGeo.Api.Controllers
         }
 
         /// <summary>
-        /// Cria uma localidade
+        /// Cria uma Nova localidade
         /// </summary>
         /// <param name="command">Requisição</param>
         /// <returns>Mensagem de sucesso, o Id, a Cidade e o Estado</returns>

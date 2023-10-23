@@ -123,7 +123,7 @@ namespace BrasilGeo.Api.Controllers
         ///     }
         /// </remarks>
         [HttpDelete]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [SwaggerResponse(StatusCodes.Status200OK, Type = typeof(CommandResult))]
         [SwaggerResponse(StatusCodes.Status400BadRequest)]
         [SwaggerResponse(StatusCodes.Status500InternalServerError)]

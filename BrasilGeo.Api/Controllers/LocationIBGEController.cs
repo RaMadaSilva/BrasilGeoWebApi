@@ -223,7 +223,7 @@ namespace BrasilGeo.Api.Controllers
         ///     }
         /// </remarks>
         [HttpDelete]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
         [SwaggerResponse(StatusCodes.Status200OK, Type = typeof(CommandResult))]

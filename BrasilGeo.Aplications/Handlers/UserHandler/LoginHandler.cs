@@ -53,7 +53,7 @@ namespace BrasilGeo.Aplications.Handlers.UserHandler
 
                 var token = _token.GenerateToken(userBd);
 
-                return new CommandResult(true, "Autenticação bem sucedida", token); 
+                return new CommandResult(true, "Autenticação bem sucedida", new TokenUserDto(token)); 
 
             }
             catch (Exception ex)

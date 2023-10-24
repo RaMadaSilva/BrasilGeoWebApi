@@ -1,6 +1,6 @@
 ﻿using BrasilGeo.Aplications.Dtos;
-using BrasilGeo.Domain.Adapter;
 using BrasilGeo.Domain.Entities.IBGE;
+using BrasilGeo.Domain.Interfaces.Adapter;
 
 namespace BrasilGeo.Aplications.Adapter
 {

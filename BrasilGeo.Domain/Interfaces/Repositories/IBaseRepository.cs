@@ -1,12 +1,12 @@
 ﻿using BrasilGeo.Domain.Entities;
-using BrasilGeo.Domain.Specifications;
+using BrasilGeo.Domain.Interfaces.Specifications;
 
-namespace BrasilGeo.Domain.Repositories
+namespace BrasilGeo.Domain.Interfaces.Repositories
 {
     public interface IBaseRepository<TEntity> where TEntity : BaseEntity
     {
         Task<IEnumerable<TEntity>> GetAllAsync();
-        Task<TEntity> GetByIdAsync (long id);
+        Task<TEntity> GetByIdAsync(long id);
         Task SaveAsync(TEntity entity);
         Task UpdateAsync(TEntity entity);
         Task DeleteAsync(TEntity entity);

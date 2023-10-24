@@ -1,8 +1,8 @@
 ﻿using BrasilGeo.Aplications.Dtos;
 using BrasilGeo.Aplications.Queries.UserQueries;
-using BrasilGeo.Domain.Adapter;
 using BrasilGeo.Domain.Entities;
-using BrasilGeo.Domain.Repositories;
+using BrasilGeo.Domain.Interfaces.Adapter;
+using BrasilGeo.Domain.Interfaces.Repositories;
 
 namespace BrasilGeo.Aplications.Handlers.UserHandler
 {

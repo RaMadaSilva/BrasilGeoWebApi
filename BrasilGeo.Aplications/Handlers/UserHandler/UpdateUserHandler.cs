@@ -1,10 +1,10 @@
 ﻿using BrasilGeo.Aplications.Commands;
 using BrasilGeo.Aplications.Commands.UserCommands;
 using BrasilGeo.Aplications.Dtos;
-using BrasilGeo.Domain.Adapter;
 using BrasilGeo.Domain.Entities;
-using BrasilGeo.Domain.Handlers.Interfaces;
-using BrasilGeo.Domain.Repositories;
+using BrasilGeo.Domain.Interfaces.Adapter;
+using BrasilGeo.Domain.Interfaces.Handlers;
+using BrasilGeo.Domain.Interfaces.Repositories;
 
 namespace BrasilGeo.Aplications.Handlers.UserHandler
 {

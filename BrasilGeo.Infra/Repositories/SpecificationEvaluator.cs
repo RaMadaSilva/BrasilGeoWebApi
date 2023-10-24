@@ -1,5 +1,5 @@
 ﻿using BrasilGeo.Domain.Entities;
-using BrasilGeo.Domain.Specifications;
+using BrasilGeo.Domain.Interfaces.Specifications;
 
 namespace BrasilGeo.Infra.Repositories
 {

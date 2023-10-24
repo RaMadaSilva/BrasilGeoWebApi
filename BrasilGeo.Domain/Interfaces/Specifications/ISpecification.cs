@@ -1,7 +1,7 @@
 ﻿using System.Linq.Expressions;
 
 
-namespace BrasilGeo.Domain.Specifications
+namespace BrasilGeo.Domain.Interfaces.Specifications
 {
     public interface ISpecification<T>
     {

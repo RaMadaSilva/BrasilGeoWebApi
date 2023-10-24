@@ -1,4 +1,4 @@
-﻿using BrasilGeo.Domain.Repositories;
+﻿using BrasilGeo.Domain.Interfaces.Repositories;
 using BrasilGeo.Infra.Context;
 
 namespace BrasilGeo.Infra.Repositories

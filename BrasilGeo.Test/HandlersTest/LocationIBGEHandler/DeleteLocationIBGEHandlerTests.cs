@@ -1,7 +1,7 @@
 ﻿using BrasilGeo.Aplications.Commands.LocationIBGECommands;
 using BrasilGeo.Aplications.Handlers.LocationIBGEHandler;
 using BrasilGeo.Domain.Entities.IBGE;
-using BrasilGeo.Domain.Repositories;
+using BrasilGeo.Domain.Interfaces.Repositories;
 using BrasilGeo.Test.Builder.Location;
 using Moq;
 

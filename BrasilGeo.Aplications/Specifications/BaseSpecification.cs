@@ -1,4 +1,4 @@
-﻿using BrasilGeo.Domain.Specifications;
+﻿using BrasilGeo.Domain.Interfaces.Specifications;
 using System.Linq.Expressions;
 
 

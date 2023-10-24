@@ -1,5 +1,5 @@
 ﻿using BrasilGeo.Domain.Entities;
-using BrasilGeo.Domain.Queries;
+using BrasilGeo.Domain.Interfaces.Queries;
 using System.Linq.Expressions;
 
 namespace BrasilGeo.Aplications.Queries.UserQueries

@@ -1,4 +1,4 @@
-﻿using BrasilGeo.Domain.Commands.Interfaces;
+﻿using BrasilGeo.Domain.Interfaces.Commands;
 
 namespace BrasilGeo.Aplications.Commands
 {

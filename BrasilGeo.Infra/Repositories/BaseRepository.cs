@@ -1,6 +1,6 @@
 ﻿using BrasilGeo.Domain.Entities;
-using BrasilGeo.Domain.Repositories;
-using BrasilGeo.Domain.Specifications;
+using BrasilGeo.Domain.Interfaces.Repositories;
+using BrasilGeo.Domain.Interfaces.Specifications;
 using BrasilGeo.Infra.Context;
 using Microsoft.EntityFrameworkCore;
 

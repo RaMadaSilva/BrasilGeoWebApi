@@ -1,6 +1,6 @@
 ﻿using BrasilGeo.Domain.Entities;
 
-namespace BrasilGeo.Domain.Services
+namespace BrasilGeo.Domain.Interfaces.Services
 {
     public interface IGeneratorTokenService
     {

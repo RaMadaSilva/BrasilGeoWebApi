@@ -1,5 +1,5 @@
 ﻿using BrasilGeo.Domain.Entities.IBGE;
-using BrasilGeo.Domain.Repositories;
+using BrasilGeo.Domain.Interfaces.Repositories;
 using BrasilGeo.Infra.Context;
 using Microsoft.EntityFrameworkCore;
 

@@ -1,11 +1,11 @@
 ﻿using BrasilGeo.Aplications.Dtos;
 using BrasilGeo.Aplications.Queries.LocationIBGEQueries;
-using BrasilGeo.Domain.Adapter;
 using BrasilGeo.Domain.Entities.IBGE;
 using BrasilGeo.Domain.Enums;
-using BrasilGeo.Domain.Handlers;
 using BrasilGeo.Domain.Helpers;
-using BrasilGeo.Domain.Repositories;
+using BrasilGeo.Domain.Interfaces.Adapter;
+using BrasilGeo.Domain.Interfaces.Handlers;
+using BrasilGeo.Domain.Interfaces.Repositories;
 
 namespace BrasilGeo.Aplications.Handlers.LocationIBGEHandler
 {

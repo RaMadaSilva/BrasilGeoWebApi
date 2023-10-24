@@ -1,4 +1,4 @@
-﻿using BrasilGeo.Domain.Services;
+﻿using BrasilGeo.Domain.Interfaces.Services;
 
 namespace BrasilGeo.Aplications.Services
 {

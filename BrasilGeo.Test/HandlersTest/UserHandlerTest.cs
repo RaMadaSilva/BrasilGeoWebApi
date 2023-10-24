@@ -1,10 +1,10 @@
 ﻿using BrasilGeo.Aplications.Adapter;
 using BrasilGeo.Aplications.Dtos;
 using BrasilGeo.Aplications.Handlers.UserHandler;
-using BrasilGeo.Domain.Adapter;
 using BrasilGeo.Domain.Commands.UserCommands;
 using BrasilGeo.Domain.Entities;
-using BrasilGeo.Domain.Repositories;
+using BrasilGeo.Domain.Interfaces.Adapter;
+using BrasilGeo.Domain.Interfaces.Repositories;
 using Moq;
 
 namespace BrasilGeo.Test.HandlersTest

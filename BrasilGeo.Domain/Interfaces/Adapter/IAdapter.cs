@@ -1,4 +1,4 @@
-﻿namespace BrasilGeo.Domain.Adapter
+﻿namespace BrasilGeo.Domain.Interfaces.Adapter
 {
     public interface IAdapter<in TSource, out TDestination>
     {

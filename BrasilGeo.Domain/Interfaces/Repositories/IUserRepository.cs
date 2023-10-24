@@ -1,6 +1,6 @@
 ﻿using BrasilGeo.Domain.Entities;
 
-namespace BrasilGeo.Domain.Repositories
+namespace BrasilGeo.Domain.Interfaces.Repositories
 {
     public interface IUserRepository : IBaseRepository<User>
     {

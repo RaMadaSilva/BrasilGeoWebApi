@@ -1,5 +1,5 @@
 ﻿using BrasilGeo.Aplications.Commands.UserCommands;
-using BrasilGeo.Domain.Commands.Interfaces;
+using BrasilGeo.Domain.Interfaces.Commands;
 using Flunt.Notifications;
 using Flunt.Validations;
 

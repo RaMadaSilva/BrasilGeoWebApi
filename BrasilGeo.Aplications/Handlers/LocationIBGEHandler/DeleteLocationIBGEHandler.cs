@@ -1,7 +1,7 @@
 ﻿using BrasilGeo.Aplications.Commands;
 using BrasilGeo.Aplications.Commands.LocationIBGECommands;
-using BrasilGeo.Domain.Handlers.Interfaces;
-using BrasilGeo.Domain.Repositories;
+using BrasilGeo.Domain.Interfaces.Handlers;
+using BrasilGeo.Domain.Interfaces.Repositories;
 
 namespace BrasilGeo.Aplications.Handlers.LocationIBGEHandler
 {

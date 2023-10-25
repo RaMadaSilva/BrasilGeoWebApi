@@ -10,10 +10,10 @@ namespace BrasilGeo.Aplications.Handlers.UserHandler
 {
     public class DeleteuserHandler : ICommandHandler<DeleteUserCommand, CommandResult>
     {
-        private readonly IUniteOfWork _uniteOfWork;
+        private readonly IUnitOfWork _uniteOfWork;
         private readonly IAdapter<User, UserDto> _adapter; 
 
-        public DeleteuserHandler(IUniteOfWork uniteOfWork, IAdapter<User, UserDto> adapter)
+        public DeleteuserHandler(IUnitOfWork uniteOfWork, IAdapter<User, UserDto> adapter)
         {
             _uniteOfWork = uniteOfWork;
             _adapter = adapter;

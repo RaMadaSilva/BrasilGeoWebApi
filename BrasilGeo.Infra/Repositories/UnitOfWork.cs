@@ -3,13 +3,13 @@ using BrasilGeo.Infra.Context;
 
 namespace BrasilGeo.Infra.Repositories
 {
-    public class UniteOfWork : IUniteOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         private IUserRepository _userRepository;
         private ILocationIBGERepository _locationIBGERepository;
         private BrazilGeoContext _context;
 
-        public UniteOfWork(BrazilGeoContext context)
+        public UnitOfWork(BrazilGeoContext context)
         {
             _context = context;
         }

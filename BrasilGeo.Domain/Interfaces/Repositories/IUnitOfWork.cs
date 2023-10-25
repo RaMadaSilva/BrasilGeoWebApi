@@ -1,6 +1,6 @@
 ﻿namespace BrasilGeo.Domain.Interfaces.Repositories
 {
-    public interface IUniteOfWork
+    public interface IUnitOfWork
     {
         IUserRepository UserRepository { get; }
         ILocationIBGERepository LocationIBGERepository { get; }

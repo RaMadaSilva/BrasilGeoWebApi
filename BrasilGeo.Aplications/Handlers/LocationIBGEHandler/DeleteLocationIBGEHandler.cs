@@ -7,9 +7,9 @@ namespace BrasilGeo.Aplications.Handlers.LocationIBGEHandler
 {
     public class DeleteLocationIBGEHandler : ICommandHandler<DeleteLocationIBGECommand, CommandResult>
     {
-        private readonly IUniteOfWork _uniteOfWork;
+        private readonly IUnitOfWork _uniteOfWork;
 
-        public DeleteLocationIBGEHandler(IUniteOfWork uniteOfWork)
+        public DeleteLocationIBGEHandler(IUnitOfWork uniteOfWork)
         {
             _uniteOfWork = uniteOfWork;
         }

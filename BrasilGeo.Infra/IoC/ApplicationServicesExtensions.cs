@@ -24,7 +24,7 @@ namespace BrasilGeo.Infra.IoC
         public static IServiceCollection AddApplicationServices(this IServiceCollection services,
             IConfiguration configuration)
         {
-            services.AddScoped<IUniteOfWork, UniteOfWork>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ILocationIBGERepository, LocationIBGERepository>();
             services.AddScoped<IUserRepository, UserRepostitory>();
             services.AddScoped<IGeneratorTokenService, GeneratorTokenService>();

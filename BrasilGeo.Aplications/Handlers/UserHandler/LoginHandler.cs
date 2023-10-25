@@ -11,12 +11,12 @@ namespace BrasilGeo.Aplications.Handlers.UserHandler
 {
     public class LoginHandler : ICommandHandler<LoginCommand, CommandResult>
     {
-        private readonly IUniteOfWork _uniteOfWork;
+        private readonly IUnitOfWork _uniteOfWork;
         private readonly IGeneratorTokenService _token;
         private readonly IAccountService _account;
         private readonly IAdapter<LoginCommand, LoginDto> _adapter; 
 
-        public LoginHandler(IUniteOfWork uniteOfWork, 
+        public LoginHandler(IUnitOfWork uniteOfWork, 
                 IGeneratorTokenService token, 
                 IAccountService account,
                 IAdapter<LoginCommand, LoginDto> adapter)

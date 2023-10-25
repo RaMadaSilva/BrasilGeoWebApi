@@ -7,9 +7,9 @@ namespace BrasilGeo.Aplications.Handlers.LocationIBGEHandler
 {
     public class UpdateLocationIBGEHandler : ICommandHandler<UpdateLocationIBGECommand, CommandResult>
     {
-        private readonly IUniteOfWork _uniteOfWork;
+        private readonly IUnitOfWork _uniteOfWork;
 
-        public UpdateLocationIBGEHandler(IUniteOfWork uniteOfWork)
+        public UpdateLocationIBGEHandler(IUnitOfWork uniteOfWork)
         {
             _uniteOfWork = uniteOfWork;
         }

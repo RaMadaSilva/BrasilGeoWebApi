@@ -8,12 +8,12 @@ namespace BrasilGeo.Test.Handlers.LocationIBGEHandler
 {
     public class CreateLocationIBGEHandlerTests
     {
-        private readonly Mock<IUniteOfWork> _unitOfWorkMock;
+        private readonly Mock<IUnitOfWork> _unitOfWorkMock;
         private readonly CreateLocationIBGEHandler _handler;
 
         public CreateLocationIBGEHandlerTests()
         {
-            _unitOfWorkMock = new Mock<IUniteOfWork>();
+            _unitOfWorkMock = new Mock<IUnitOfWork>();
             _handler = new CreateLocationIBGEHandler(_unitOfWorkMock.Object);
         }
 

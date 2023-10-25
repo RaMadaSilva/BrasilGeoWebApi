@@ -8,10 +8,10 @@ namespace BrasilGeo.Aplications.Handlers.UserHandler
 {
     public class UserQueryHandler 
     {
-        private readonly IUniteOfWork _uniteOfWork;
+        private readonly IUnitOfWork _uniteOfWork;
         private readonly IAdapter<IEnumerable<User>, IEnumerable<UserDto>> _adapter;
 
-        public UserQueryHandler(IUniteOfWork uniteOfWork,
+        public UserQueryHandler(IUnitOfWork uniteOfWork,
             IAdapter<IEnumerable<User>, IEnumerable<UserDto>> adapter)
         {
             _uniteOfWork = uniteOfWork;

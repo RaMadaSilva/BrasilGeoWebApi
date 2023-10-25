@@ -9,12 +9,12 @@ namespace BrasilGeo.Test.Handlers.LocationIBGEHandler
 {
     public class DeleteLocationIBGEHandlerTests
     {
-        private readonly Mock<IUniteOfWork> _unitOfWorkMock;
+        private readonly Mock<IUnitOfWork> _unitOfWorkMock;
         private readonly DeleteLocationIBGEHandler _handler;
 
         public DeleteLocationIBGEHandlerTests()
         {
-            _unitOfWorkMock = new Mock<IUniteOfWork>();
+            _unitOfWorkMock = new Mock<IUnitOfWork>();
             _handler = new DeleteLocationIBGEHandler(_unitOfWorkMock.Object);
         }
 

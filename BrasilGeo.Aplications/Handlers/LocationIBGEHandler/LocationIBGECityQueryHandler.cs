@@ -10,10 +10,10 @@ namespace BrasilGeo.Aplications.Handlers.LocationIBGEHandler
     public class LocationIBGECityQueryHandler : IQueryHandler<LocationIBGECityQuery,
         IEnumerable<LocationIBGEDto>>
     {
-        private readonly IUniteOfWork _uniteOfWork;
+        private readonly IUnitOfWork _uniteOfWork;
         private readonly IAdapter<IEnumerable<LocationIBGE>, IEnumerable<LocationIBGEDto>> _adapter;
 
-        public LocationIBGECityQueryHandler(IUniteOfWork uniteOfWork, IAdapter<IEnumerable<LocationIBGE>, 
+        public LocationIBGECityQueryHandler(IUnitOfWork uniteOfWork, IAdapter<IEnumerable<LocationIBGE>, 
             IEnumerable<LocationIBGEDto>> adapter)
         {
             _uniteOfWork = uniteOfWork;

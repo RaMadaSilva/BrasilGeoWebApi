@@ -11,10 +11,10 @@ namespace BrasilGeo.Aplications.Handlers.LocationIBGEHandler
     public class LocationIBGECodeQueryHandler : IQueryHandler<LocationIBGECodeQuery,
         LocationIBGEDto>
     {
-        private readonly IUniteOfWork _uniteOfWork;
+        private readonly IUnitOfWork _uniteOfWork;
         private readonly IAdapter<LocationIBGE, LocationIBGEDto> _adapter;
 
-        public LocationIBGECodeQueryHandler(IUniteOfWork uniteOfWork, 
+        public LocationIBGECodeQueryHandler(IUnitOfWork uniteOfWork, 
             IAdapter<LocationIBGE, LocationIBGEDto> adapter)
         {
             _uniteOfWork = uniteOfWork;

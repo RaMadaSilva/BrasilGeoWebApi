@@ -10,10 +10,10 @@ namespace BrasilGeo.Aplications.Handlers.UserHandler
 {
     public class CreateUserHandler : ICommandHandler<CreateUserCommand, CommandResult>
     {
-        private readonly IUniteOfWork _uinteOfWork;
+        private readonly IUnitOfWork _uinteOfWork;
         private readonly IAdapter<User, UserDto> _adapter;
 
-        public CreateUserHandler(IUniteOfWork uinteOfWork, IAdapter<User, UserDto> adapter)
+        public CreateUserHandler(IUnitOfWork uinteOfWork, IAdapter<User, UserDto> adapter)
         {
             _uinteOfWork = uinteOfWork;
             _adapter = adapter;

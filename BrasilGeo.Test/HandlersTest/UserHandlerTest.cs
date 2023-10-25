@@ -11,7 +11,7 @@ namespace BrasilGeo.Test.HandlersTest
 {
     public class UserHandlerTest
     {
-        private readonly Mock<IUniteOfWork> _uow; 
+        private readonly Mock<IUnitOfWork> _uow; 
         private readonly CreateUserHandler _handler;
         private readonly IAdapter<User, UserDto> _adapter;
 
@@ -19,7 +19,7 @@ namespace BrasilGeo.Test.HandlersTest
         public UserHandlerTest()
         {
             _adapter = new UserToDtoAdapter();
-            _uow = new Mock<IUniteOfWork>();
+            _uow = new Mock<IUnitOfWork>();
             _handler = new CreateUserHandler(_uow.Object, _adapter);
 
         }

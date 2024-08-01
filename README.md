@@ -1,4 +1,6 @@
-# 🌍 BrazilGeoAPI
+![2024-08-01_09h16_00](https://github.com/user-attachments/assets/3e895185-2fe1-47b2-ba9c-d9d8a7ff24cb)
+
+# 🌍 IXi Yetu API
 
 A BrazilGeoAPI é uma API que fornece informações geográficas sobre cidades e estados do Brasil. Este projeto é parte de um desafio de desenvolvimento e visa criar uma API robusta com funcionalidades de autenticação, cadastro, pesquisa e importação de dados.
 
@@ -33,9 +35,6 @@ A BrazilGeoAPI é uma API que fornece informações geográficas sobre cidades e
 -  **Adapter:** O padrão Adapter atua como uma ponte entre duas interfaces incompatíveis, para transformar uma entidade em um Dto usamos o padrão adapter.
   
 -  **Clean Architecture:** Arquitetura Limpa permite que as mudanças tenham impacto isolado e permite que o sistema seja facilmente estendido e mantido. 
-
-
-     ![image](https://github.com/RaMadaSilva/BrasilGeoWebApi/assets/91338367/6931f1b7-5d8e-425d-8a07-cc52ba5a00e3)
 
 ## Link da API Publicada e Swagger 🔗
 
